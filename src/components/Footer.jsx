@@ -21,7 +21,7 @@ export default function Footer() {
                         className="h-16 md:h-24 w-auto object-contain opacity-100"
                     />
                     <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-[1] uppercase">
-                        Start <br /> <span className="gradient-text italic">Something.</span>
+                        Start <br /> <span className="gradient-text italic pr-4">Something.</span>
                     </h2>
                 </div>
 
@@ -46,7 +46,7 @@ export default function Footer() {
             </div>
 
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] uppercase font-bold tracking-[0.3em] text-gray-600 border-t border-white/5 pt-10 relative z-10">
-                <p>&copy; {new Date().getFullYear()} Tinted Media // Global Creative Studio</p>
+                <p>&copy; 2026 Tinted Media. All rights reserved.</p>
                 <div className="flex gap-10 mt-6 md:mt-0">
                     <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
                     <Link href="#" className="hover:text-white transition-colors">Terms</Link>

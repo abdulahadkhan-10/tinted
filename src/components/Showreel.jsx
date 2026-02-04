@@ -37,12 +37,12 @@ export default function Showreel() {
                     </motion.div>
 
                     <h2 className="text-6xl md:text-9xl font-black text-white uppercase tracking-tighter leading-none select-none">
-                        Show<span className="text-gray-500 italic">reel</span>
+                        Show<span className="text-gray-500 italic pr-4">reel</span>
                     </h2>
                 </div>
 
                 {/* Corner Accents */}
-             
+
 
                 <div className="absolute bottom-12 right-12">
                     <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-white/60">© 2026 Tinted Media</span>

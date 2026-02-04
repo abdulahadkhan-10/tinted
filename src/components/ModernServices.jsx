@@ -40,7 +40,7 @@ export default function ModernServices() {
                     <div className="space-y-4">
                         <h3 className="text-electric-blue font-mono text-[10px] tracking-[0.4em] uppercase">Our Expertise</h3>
                         <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
-                            Our <br /> <span className="text-gray-500 italic font-light">Services</span>
+                            Our <br /> <span className="text-gray-500 italic font-light pr-4">Services</span>
                         </h2>
                     </div>
                 </div>
