@@ -62,8 +62,8 @@ export default function ModernServices() {
                                 </h3>
                             </div>
 
-                            <div className="mt-6 md:mt-0 flex items-center gap-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-x-10 group-hover:translate-x-0">
-                                <p className="hidden md:block text-gray-200 max-w-sm text-right text-sm font-medium leading-relaxed">
+                            <div className="mt-6 md:mt-0 flex items-center gap-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-x-10 group-hover:translate-x-0 relative">
+                                <p className="hidden md:block text-gray-200 max-w-sm text-right text-sm font-medium leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
                                     {service.desc}
                                 </p>
                                 <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-electric-blue group-hover:border-electric-blue transition-all duration-500">
@@ -78,14 +78,16 @@ export default function ModernServices() {
                                         initial={{ opacity: 0, scale: 0.8, x: 50, rotate: 5 }}
                                         animate={{ opacity: 1, scale: 1, x: 0, rotate: 0 }}
                                         exit={{ opacity: 0, scale: 0.8, x: 50, rotate: 5 }}
-                                        className="fixed top-1/2 right-[5%] -translate-y-1/2 w-[280px] md:w-[350px] aspect-[3/4] rounded-2xl overflow-hidden pointer-events-none z-[5] hidden lg:block shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10"
+                                        className="fixed top-1/2 right-[2%] -translate-y-1/2 w-[280px] md:w-[350px] aspect-[3/4] rounded-2xl overflow-hidden pointer-events-none z-[1] hidden lg:block shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/10"
                                     >
                                         <img
                                             src={service.image}
                                             alt={service.title}
                                             className="w-full h-full object-cover"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                                        {/* Dual Gradient for Contrast: Bottom for vibe, Left for text readability if overlap happens */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
                                     </motion.div>
                                 )}
                             </AnimatePresence>
