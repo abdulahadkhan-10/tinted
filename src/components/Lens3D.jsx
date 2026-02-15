@@ -47,10 +47,10 @@ function OpticalCore({ scrollProgress }) {
         <group>
             {/* The Glass Central Lens */}
             <mesh ref={coreRef}>
-                <sphereGeometry args={[1.2, 64, 64]} />
+                <sphereGeometry args={[1.2, 32, 32]} />
                 <MeshTransmissionMaterial
                     backside
-                    samples={16}
+                    samples={6}
                     thickness={0.5}
                     chromaticAberration={0.05}
                     anisotropy={0.1}

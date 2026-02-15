@@ -1,105 +1,85 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import { motion, useSpring, useMotionValue, useTransform } from "framer-motion";
+import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export default function CustomCursor() {
     const [hoverType, setHoverType] = useState(null); // null, 'magnetic', 'large'
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
-    // Smooth springs for a "premium" weighted feel
-    const springConfig = { damping: 35, stiffness: 250, mass: 0.5 };
+    // Optimized springs
+    const springConfig = { damping: 40, stiffness: 300, mass: 0.4 };
     const cursorXSpring = useSpring(cursorX, springConfig);
     const cursorYSpring = useSpring(cursorY, springConfig);
 
-    const outerSize = 40;
-    const innerSize = 6;
-
     useEffect(() => {
         const moveCursor = (e) => {
-            const { clientX, clientY } = e;
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
+        };
 
-            // Check for magnetic elements
-            const hoveredEl = document.elementFromPoint(clientX, clientY);
-            const magneticEl = hoveredEl?.closest('.magnetic');
+        const handleOver = (e) => {
+            const target = e.target;
+            const magneticEl = target.closest('.magnetic');
+            const interactiveEl = target.closest('a, button, .interactive');
 
             if (magneticEl) {
                 const rect = magneticEl.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
 
-                // Pull toward center (Magnetic effect)
-                const pullX = centerX + (clientX - centerX) * 0.4;
-                const pullY = centerY + (clientY - centerY) * 0.4;
-
-                cursorX.set(pullX);
-                cursorY.set(pullY);
+                // Static magnetic pull - only snap center if very close
+                // Otherwise just use large hover
                 setHoverType('magnetic');
+                // We don't overwrite cursor position here anymore to prevent lag
+                // The physics should happen in the animation layer
+            } else if (interactiveEl) {
+                setHoverType('large');
             } else {
-                cursorX.set(clientX);
-                cursorY.set(clientY);
-
-                // Regular interactive check
-                if (hoveredEl?.closest('a, button, .interactive')) {
-                    setHoverType('large');
-                } else {
-                    setHoverType(null);
-                }
+                setHoverType(null);
             }
         };
 
-        window.addEventListener("mousemove", moveCursor);
-        return () => window.removeEventListener("mousemove", moveCursor);
+        window.addEventListener("mousemove", moveCursor, { passive: true });
+        window.addEventListener("mouseover", handleOver, { passive: true });
+
+        return () => {
+            window.removeEventListener("mousemove", moveCursor);
+            window.removeEventListener("mouseover", handleOver);
+        };
     }, [cursorX, cursorY]);
 
     return (
         <>
-            {/* Outer Magnetic Ring */}
             <motion.div
                 className="fixed top-0 left-0 rounded-full border border-electric-blue/40 pointer-events-none z-[9999] hidden md:block"
                 style={{
                     x: cursorXSpring,
                     y: cursorYSpring,
-                    width: outerSize,
-                    height: outerSize,
+                    width: 40,
+                    height: 40,
                     translateX: "-50%",
                     translateY: "-50%",
                 }}
                 animate={{
-                    scale: hoverType === 'magnetic' ? 1.8 : hoverType === 'large' ? 1.5 : 1,
-                    borderWidth: hoverType === 'magnetic' ? '1px' : '1px',
-                    borderColor: hoverType === 'magnetic' ? 'rgb(42, 102, 255)' : 'rgba(42, 102, 255, 0.4)',
-                    backgroundColor: hoverType === 'magnetic' ? 'rgba(42, 102, 255, 0.05)' : 'transparent',
+                    scale: hoverType === 'magnetic' ? 1.5 : hoverType === 'large' ? 1.2 : 1,
+                    backgroundColor: hoverType === 'magnetic' ? 'rgba(42, 102, 255, 0.1)' : 'transparent',
                 }}
-                transition={{ type: "spring", damping: 20, stiffness: 200 }}
             />
 
-            {/* The "Tint" Bleed / Core */}
             <motion.div
                 className="fixed top-0 left-0 bg-electric-blue rounded-full pointer-events-none z-[9999] hidden md:block"
                 style={{
                     x: cursorX,
                     y: cursorY,
-                    width: innerSize,
-                    height: innerSize,
+                    width: 6,
+                    height: 6,
                     translateX: "-50%",
                     translateY: "-50%",
                 }}
                 animate={{
-                    scale: hoverType === 'magnetic' ? 0.5 : hoverType === 'large' ? 4 : 1,
-                    opacity: hoverType === 'large' ? 0.2 : 1,
-                    backgroundColor: hoverType === 'magnetic' ? '#55c2ff' : '#2a66ff',
-                }}
-            />
-
-            {/* Subtle trailing glow */}
-            <motion.div
-                className="fixed top-0 left-0 w-32 h-32 bg-electric-blue/5 blur-3xl rounded-full pointer-events-none z-[9998] hidden md:block"
-                style={{
-                    x: cursorXSpring,
-                    y: cursorYSpring,
-                    translateX: "-50%",
-                    translateY: "-50%",
+                    scale: hoverType ? 2 : 1,
+                    opacity: hoverType === 'large' ? 0.3 : 1
                 }}
             />
         </>

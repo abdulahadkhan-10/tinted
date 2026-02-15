@@ -35,11 +35,11 @@ export default function AboutSection() {
         <section ref={containerRef} className="relative w-full bg-white">
 
             {/* STICKY CONTAINER */}
-            <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row max-w-7xl mx-auto items-start relative">
 
                 {/* LEFT: Sticky Visual (The "Lens") */}
-                <div className="flex w-full lg:w-1/2 h-[60vh] lg:h-screen sticky top-16 lg:top-0 items-center justify-center p-4 lg:p-10 z-10 overflow-hidden">
-                    <div className="relative w-full h-[300px] md:h-[450px] lg:h-[600px] flex items-center justify-center">
+                <div className="w-full lg:w-1/2 h-[50vh] lg:h-screen sticky top-20 lg:top-0 z-10 flex items-center justify-center p-4 lg:p-10 pointer-events-none">
+                    <div className="relative w-full h-full max-w-[300px] md:max-w-[450px] lg:max-w-[600px] flex items-center justify-center">
 
                         {/* Background Glow */}
                         <div className="absolute inset-0 bg-electric-blue/5 blur-[80px] lg:blur-[160px] rounded-full opacity-30" />
@@ -58,7 +58,7 @@ export default function AboutSection() {
                 </div>
 
                 {/* RIGHT: Scrolling Text Content */}
-                <div className="w-full lg:w-1/2 relative z-20 -mt-[10vh] lg:mt-0">
+                <div className="w-full lg:w-1/2 relative z-20">
                     {/* Intro Spacer */}
                     <div className="h-[10vh] lg:h-[50vh]" />
 
