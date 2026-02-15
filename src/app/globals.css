@@ -2,17 +2,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #05070a;
-  --foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #05070a;
 
   /* Premium Electric Palette */
   --electric-blue: #2a66ff;
   --electric-purple: #9d50bb;
-  --neon-lime: #b6ff1b;
-  --soft-white: rgba(255, 255, 255, 0.9);
+  --neon-lime: #85c200;
+  /* Darker version for white bg visibility */
+  --soft-white: rgba(5, 7, 10, 0.9);
 
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.08);
 }
 
 @theme inline {
@@ -26,15 +27,19 @@
   --font-sans: 'Outfit', sans-serif;
 }
 
+html {
+  background: #ffffff !important;
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  background: #ffffff !important;
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Premium Animations */
 @keyframes float {
 
   0%,

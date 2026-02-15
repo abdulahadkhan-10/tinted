@@ -11,7 +11,7 @@ const stats = [
 
 export default function StatsSection() {
     return (
-        <section className="py-24 bg-[#05070a] border-y border-white/5">
+        <section className="py-24 bg-white border-y border-gray-100">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
                     {stats.map((stat, idx) => (
@@ -21,12 +21,12 @@ export default function StatsSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
                             viewport={{ once: true }}
-                            className="text-center space-y-2 group"
+                            className="magnetic text-center space-y-2 group cursor-pointer"
                         >
-                            <h4 className="text-4xl md:text-6xl font-black text-white tracking-tighter group-hover:text-electric-blue transition-colors duration-500">
+                            <h4 className="text-4xl md:text-6xl font-black text-black tracking-tighter group-hover:text-electric-blue transition-colors duration-500">
                                 {stat.value}
                             </h4>
-                            <p className="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold">
+                            <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-bold">
                                 {stat.label}
                             </p>
                             <div className="h-[2px] w-0 bg-electric-blue group-hover:w-12 transition-all duration-500 mx-auto" />

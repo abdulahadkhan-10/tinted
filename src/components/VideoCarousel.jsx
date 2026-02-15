@@ -37,9 +37,9 @@ export default function VideoCarousel() {
     }, []);
 
     return (
-        <section className="py-20 md:py-32 bg-[#05070a] relative overflow-hidden">
+        <section className="py-20 md:py-32 bg-background relative overflow-hidden">
             {/* Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-electric-blue/5 blur-[150px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-electric-blue/10 blur-[150px] rounded-full pointer-events-none" />
 
             <div className="max-w-7xl mx-auto px-6 mb-12 md:mb-20 relative z-10 text-center">
                 <div className="inline-flex items-center gap-3 mb-6">
@@ -47,11 +47,11 @@ export default function VideoCarousel() {
                     <span className="text-electric-blue font-mono text-[10px] uppercase tracking-[0.4em]">Portfolio Showcase</span>
                     <div className="w-8 h-[1px] bg-electric-blue" />
                 </div>
-                <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 px-4 inline-block">
+                <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 px-4 inline-block text-foreground">
                     The <br className="md:hidden" />
                     <span className="gradient-text italic pr-4">Live Feed.</span>
                 </h2>
-                <p className="text-gray-500 max-w-lg mx-auto font-medium uppercase text-xs tracking-[0.2em] leading-relaxed">
+                <p className="text-gray-600 max-w-lg mx-auto font-medium uppercase text-xs tracking-[0.2em] leading-relaxed">
                     Cinematic storytelling meets high-performance marketing. Perfectly executed for the digital stage.
                 </p>
             </div>
@@ -59,7 +59,7 @@ export default function VideoCarousel() {
             {/* Hero Phone Frame - PORTRAIT (OPTIMIZED VERTICAL) */}
             <div className="relative max-w-[300px] md:max-w-[420px] mx-auto z-10 px-4">
                 {/* Phone Body with High-Vis Edge - Aspect adjusted to 9/16 for better viewport fit */}
-                <div className="relative aspect-[9/16] bg-[#050505] rounded-[3rem] border-[8px] md:border-[12px] border-[#1a1a1a] ring-1 ring-white/10 shadow-[0_0_80px_-20px_rgba(42,102,255,0.3),0_50px_100px_-20px_rgba(0,0,0,0.9)] overflow-hidden">
+                <div className="relative aspect-[9/16] bg-[#050505] rounded-[3rem] border-[8px] md:border-[12px] border-[#1a1a1a] ring-1 ring-black/5 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] overflow-hidden">
 
                     {/* Internal Screen with Auto-Slider */}
                     <div className="absolute inset-0">
@@ -96,7 +96,7 @@ export default function VideoCarousel() {
                                             <span className="text-[9px] md:text-[10px] font-black text-white">{work.comments}</span>
                                         </div>
                                         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer">
-                                            <Share2 className="w-5 h-5 md:w-6 md:h-6" />
+                                            <Share2 className="w-5 h-5 md:w-6 md:h-6 text-white" />
                                         </div>
                                     </div>
 
@@ -121,7 +121,7 @@ export default function VideoCarousel() {
                         <button
                             key={i}
                             onClick={() => setIndex(i)}
-                            className={`h-1.5 transition-all duration-500 rounded-full ${index === i ? "w-12 md:w-16 bg-white shadow-[0_0_10px_#fff]" : "w-4 md:w-5 bg-white/10 hover:bg-white/30"}`}
+                            className={`h-1.5 transition-all duration-500 rounded-full ${index === i ? "w-12 md:w-16 bg-foreground shadow-[0_0_10px_rgba(0,0,0,0.2)]" : "w-4 md:w-5 bg-black/10 hover:bg-black/30"}`}
                         />
                     ))}
                 </div>
