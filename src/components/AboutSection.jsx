@@ -33,70 +33,81 @@ export default function AboutSection() {
 
     return (
         <section ref={containerRef} className="relative w-full bg-white">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="flex flex-col lg:flex-row gap-10 items-start">
 
-            {/* STICKY CONTAINER */}
-            <div className="flex flex-col lg:flex-row max-w-7xl mx-auto items-start relative">
+                    {/* LEFT: STICKY VISUAL */}
+                    <div className="w-full lg:w-1/2 sticky top-0 h-[60vh] lg:h-screen flex items-center justify-center z-10">
+                        <div className="relative w-full aspect-square max-w-[500px] flex items-center justify-center">
 
-                {/* LEFT: Sticky Visual (The "Lens") */}
-                <div className="w-full lg:w-1/2 h-[50vh] lg:h-screen sticky top-20 lg:top-0 z-10 flex items-center justify-center p-4 lg:p-10 pointer-events-none">
-                    <div className="relative w-full h-full max-w-[300px] md:max-w-[450px] lg:max-w-[600px] flex items-center justify-center">
+                            {/* Background Glow */}
+                            <div className="absolute inset-0 bg-electric-blue/5 blur-[100px] rounded-full opacity-30" />
 
-                        {/* Background Glow */}
-                        <div className="absolute inset-0 bg-electric-blue/5 blur-[80px] lg:blur-[160px] rounded-full opacity-30" />
+                            {/* 3D Core */}
+                            <div className="w-full h-full">
+                                <Lens3D scrollProgress={scrollYProgress} />
+                            </div>
 
-                        {/* 3D CANVAS COMPONENT */}
-                        <Lens3D scrollProgress={scrollYProgress} />
-
-                        {/* Subtle Floating Labels for Tech Feel */}
-                        <motion.div
-                            style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}
-                            className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[8px] uppercase tracking-[0.6em] text-gray-400 font-mono animate-pulse"
-                        >
-                            Optical Core // Phase 01
-                        </motion.div>
-                    </div>
-                </div>
-
-                {/* RIGHT: Scrolling Text Content */}
-                <div className="w-full lg:w-1/2 relative z-20">
-                    {/* Intro Spacer */}
-                    <div className="h-[10vh] lg:h-[50vh]" />
-
-                    {/* Chapters */}
-                    {chapters.map((chapter, index) => (
-                        <div key={index} className="h-screen flex flex-col justify-center px-6 lg:px-20 relative">
+                            {/* Technical Labels */}
                             <motion.div
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, ease: "easeOut" }}
-                                viewport={{ amount: 0.5 }}
-                                className="space-y-6"
+                                style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}
+                                className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.5em] text-gray-400 font-mono"
                             >
-                                <span className="text-electric-blue font-mono text-sm tracking-[0.3em] uppercase block">
-                                    0{index + 1} // {chapter.title}
-                                </span>
-                                <h3 className="text-4xl md:text-6xl font-black uppercase leading-none tracking-tighter text-foreground">
-                                    {chapter.highlight}
-                                </h3>
-                                <p className="text-gray-600 text-lg md:text-xl font-light leading-relaxed max-w-md">
-                                    {chapter.text}
-                                </p>
+                                SYS // OPTICAL_CORE_v1
                             </motion.div>
                         </div>
-                    ))}
-
-                    {/* Call to Action at the end */}
-                    <div className="h-[50vh] flex items-center px-6 lg:px-20 pb-20">
-                        <Link
-                            href="/about"
-                            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-foreground text-background font-bold text-lg rounded-full overflow-hidden transition-all shadow-xl"
-                        >
-                            <span className="relative z-10 flex items-center gap-2 group-hover:text-background transition-colors duration-300">
-                                Start Your Journey <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                            </span>
-                            <div className="absolute inset-0 bg-electric-blue transform translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                        </Link>
                     </div>
+
+                    {/* RIGHT: SCROLLING CONTENT */}
+                    <div className="w-full lg:w-1/2">
+                        {/* Initial Spacer to allow visual to be seen alone */}
+                        <div className="h-[20vh] lg:h-[40vh]" />
+
+                        {chapters.map((chapter, index) => (
+                            <div key={index} className="min-h-screen flex flex-col justify-center py-20">
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.8 }}
+                                    viewport={{ amount: 0.6 }}
+                                    className="space-y-8"
+                                >
+                                    <span className="text-electric-blue font-mono text-xs tracking-[0.4em] uppercase">
+                                        Phase // 0{index + 1}
+                                    </span>
+                                    <h3 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-black">
+                                        {chapter.highlight}
+                                    </h3>
+                                    <p className="text-gray-500 text-lg md:text-xl font-light leading-relaxed max-w-md">
+                                        {chapter.text}
+                                    </p>
+                                </motion.div>
+                            </div>
+                        ))}
+
+                        {/* FINAL CTA */}
+                        <div className="h-screen flex items-center pt-20">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                className="space-y-10"
+                            >
+                                <h3 className="text-4xl font-black uppercase tracking-tighter text-black">
+                                    Ready to change <br /> your <span className="text-electric-blue italic font-light">perspective?</span>
+                                </h3>
+                                <Link
+                                    href="/contact"
+                                    className="magnetic group relative inline-flex items-center gap-6 px-12 py-6 bg-black text-white font-black text-sm uppercase tracking-widest rounded-full overflow-hidden transition-all shadow-2xl"
+                                >
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        Start Your Journey <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                    </span>
+                                    <div className="absolute inset-0 bg-electric-blue transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                                </Link>
+                            </motion.div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-[#05070a] selection:bg-electric-blue selection:text-white relative overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#05070a] selection:bg-electric-blue selection:text-white relative">
       <Preloader />
       <Navbar />
 
