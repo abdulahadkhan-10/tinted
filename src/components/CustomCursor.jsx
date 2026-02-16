@@ -1,90 +1,105 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, useSpring, useMotionValue, useTransform } from "framer-motion";
 
 export default function CustomCursor() {
-    // We use MotionValues for position - these do NOT trigger React re-renders when they change
+    const [hoverType, setHoverType] = useState(null); // null, 'magnetic', 'large'
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
-    const cursorScale = useMotionValue(1);
-    const innerOpacity = useMotionValue(1);
-    const innerScale = useMotionValue(1);
 
-    // Smooth springs for the outer ring
-    const springConfig = { damping: 45, stiffness: 400, mass: 0.4 };
+    // Smooth springs for a "premium" weighted feel
+    const springConfig = { damping: 35, stiffness: 250, mass: 0.5 };
     const cursorXSpring = useSpring(cursorX, springConfig);
     const cursorYSpring = useSpring(cursorY, springConfig);
 
-    useEffect(() => {
-        // 1. Position update is pure MotionValue - zero React overhead
-        const moveCursor = (e) => {
-            cursorX.set(e.clientX);
-            cursorY.set(e.clientY);
-        };
+    const outerSize = 40;
+    const innerSize = 6;
 
-        // 2. State-less hover detection using event delegation
-        // Instead of useState, we update MotionValues directly
-        const handleOver = (e) => {
-            const target = e.target;
-            const magneticEl = target.closest('.magnetic');
-            const interactiveEl = target.closest('a, button, .interactive');
+    useEffect(() => {
+        const moveCursor = (e) => {
+            const { clientX, clientY } = e;
+
+            // Check for magnetic elements
+            const hoveredEl = document.elementFromPoint(clientX, clientY);
+            const magneticEl = hoveredEl?.closest('.magnetic');
 
             if (magneticEl) {
-                cursorScale.set(1.5);
-                innerOpacity.set(0.8);
-                innerScale.set(0.5);
-            } else if (interactiveEl) {
-                cursorScale.set(1.6);
-                innerOpacity.set(0.2);
-                innerScale.set(4);
+                const rect = magneticEl.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                // Pull toward center (Magnetic effect)
+                const pullX = centerX + (clientX - centerX) * 0.4;
+                const pullY = centerY + (clientY - centerY) * 0.4;
+
+                cursorX.set(pullX);
+                cursorY.set(pullY);
+                setHoverType('magnetic');
             } else {
-                cursorScale.set(1);
-                innerOpacity.set(1);
-                innerScale.set(1);
+                cursorX.set(clientX);
+                cursorY.set(clientY);
+
+                // Regular interactive check
+                if (hoveredEl?.closest('a, button, .interactive')) {
+                    setHoverType('large');
+                } else {
+                    setHoverType(null);
+                }
             }
         };
 
-        window.addEventListener("mousemove", moveCursor, { passive: true });
-        window.addEventListener("mouseover", handleOver, { passive: true });
-
-        // Hide real cursor on body
-        document.body.style.cursor = "none";
-
-        return () => {
-            window.removeEventListener("mousemove", moveCursor);
-            window.removeEventListener("mouseover", handleOver);
-            document.body.style.cursor = "auto";
-        };
-    }, []); // Empty dependency array means this only runs once
+        window.addEventListener("mousemove", moveCursor);
+        return () => window.removeEventListener("mousemove", moveCursor);
+    }, [cursorX, cursorY]);
 
     return (
         <>
-            {/* Outer Ring - Spring based for weighted feel */}
+            {/* Outer Magnetic Ring */}
             <motion.div
                 className="fixed top-0 left-0 rounded-full border border-electric-blue/40 pointer-events-none z-[9999] hidden md:block"
                 style={{
                     x: cursorXSpring,
                     y: cursorYSpring,
-                    width: 40,
-                    height: 40,
+                    width: outerSize,
+                    height: outerSize,
                     translateX: "-50%",
                     translateY: "-50%",
-                    scale: cursorScale,
                 }}
+                animate={{
+                    scale: hoverType === 'magnetic' ? 1.8 : hoverType === 'large' ? 1.5 : 1,
+                    borderWidth: hoverType === 'magnetic' ? '1px' : '1px',
+                    borderColor: hoverType === 'magnetic' ? 'rgb(42, 102, 255)' : 'rgba(42, 102, 255, 0.4)',
+                    backgroundColor: hoverType === 'magnetic' ? 'rgba(42, 102, 255, 0.05)' : 'transparent',
+                }}
+                transition={{ type: "spring", damping: 20, stiffness: 200 }}
             />
 
-            {/* Inner Dot - Low latency (no spring) */}
+            {/* The "Tint" Bleed / Core */}
             <motion.div
                 className="fixed top-0 left-0 bg-electric-blue rounded-full pointer-events-none z-[9999] hidden md:block"
                 style={{
                     x: cursorX,
                     y: cursorY,
-                    width: 6,
-                    height: 6,
+                    width: innerSize,
+                    height: innerSize,
                     translateX: "-50%",
                     translateY: "-50%",
-                    scale: innerScale,
-                    opacity: innerOpacity,
+                }}
+                animate={{
+                    scale: hoverType === 'magnetic' ? 0.5 : hoverType === 'large' ? 4 : 1,
+                    opacity: hoverType === 'large' ? 0.2 : 1,
+                    backgroundColor: hoverType === 'magnetic' ? '#55c2ff' : '#2a66ff',
+                }}
+            />
+
+            {/* Subtle trailing glow */}
+            <motion.div
+                className="fixed top-0 left-0 w-32 h-32 bg-electric-blue/5 blur-3xl rounded-full pointer-events-none z-[9998] hidden md:block"
+                style={{
+                    x: cursorXSpring,
+                    y: cursorYSpring,
+                    translateX: "-50%",
+                    translateY: "-50%",
                 }}
             />
         </>

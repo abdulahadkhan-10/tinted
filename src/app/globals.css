@@ -29,6 +29,7 @@
 
 html {
   background: #ffffff !important;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -37,8 +38,6 @@ body {
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  /* Hardware acceleration for scroll */
-  transform: translate3d(0, 0, 0);
 }
 
 @keyframes float {
@@ -60,8 +59,8 @@ body {
 /* Glassmorphism Helpers */
 .premium-glass {
   background: var(--glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
 }
 
