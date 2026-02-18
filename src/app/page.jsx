@@ -22,10 +22,8 @@ export default function Home() {
       {/* Background Texture Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[50] opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/noise.png')]" />
 
-      <Hero />
 
       {/* NEW: Stats Section for immediate proof of impact */}
-      <StatsSection />
 
       {/* NEW: Full Screen Cinematic Showreel */}
       <Showreel />

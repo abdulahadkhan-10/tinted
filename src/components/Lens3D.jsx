@@ -2,11 +2,9 @@
 import React, { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
-    MeshTransmissionMaterial,
     Environment,
     Float,
-    PerspectiveCamera,
-    ContactShadows
+    PerspectiveCamera
 } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -48,20 +46,13 @@ function OpticalCore({ scrollProgress }) {
             {/* The Glass Central Lens */}
             <mesh ref={coreRef}>
                 <sphereGeometry args={[1.2, 64, 64]} />
-                <MeshTransmissionMaterial
-                    backside
-                    samples={16}
-                    thickness={0.5}
-                    chromaticAberration={0.05}
-                    anisotropy={0.1}
-                    distortion={0.1}
-                    distortionScale={0.1}
-                    temporalDistortion={0.1}
-                    clearcoat={1}
-                    attenuationDistance={0.5}
-                    attenuationColor="#ffffff"
-                    color="#e0f2fe"
+                <meshPhysicalMaterial
                     roughness={0}
+                    transmission={1}
+                    thickness={0.5}
+                    color="#e0f2fe"
+                    ior={1.5}
+                    clearcoat={1}
                 />
             </mesh>
 
@@ -142,7 +133,7 @@ function Points() {
 export default function Lens3D({ scrollProgress }) {
     return (
         <div className="w-full h-full">
-            <Canvas dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
+            <Canvas dpr={[1, 1.5]} gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}>
                 <PerspectiveCamera makeDefault position={[0, 0, 6]} fov={45} />
 
                 <ambientLight intensity={0.5} />
@@ -154,13 +145,7 @@ export default function Lens3D({ scrollProgress }) {
                 </Float>
 
                 <Environment preset="city" />
-                <ContactShadows
-                    position={[0, -3.5, 0]}
-                    opacity={0.4}
-                    scale={10}
-                    blur={2}
-                    far={4.5}
-                />
+                {/* ContactShadows removed for performance */}
             </Canvas>
         </div>
     );
