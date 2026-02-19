@@ -1,57 +1,80 @@
+'use client';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function BTSPage() {
     return (
-        <main className="min-h-screen bg-[#05070a] text-white selection:bg-electric-blue selection:text-white font-sans">
+        <main className="min-h-screen bg-white text-black selection:bg-electric-blue selection:text-white font-sans">
             <Navbar />
 
             {/* Header */}
             <section className="pt-40 pb-20 px-6 max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-end gap-10">
                     <div className="space-y-4">
-                        <span className="px-4 py-1 border border-electric-blue text-electric-blue font-mono text-[10px] uppercase tracking-[0.4em] rounded-full">Archive // 2024-25</span>
-                        <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.85]">
-                            The <span className="gradient-text italic">Unfiltered</span> <br /> Process.
+                        <span className="px-4 py-1 border border-electric-blue text-electric-blue font-mono text-[10px] uppercase tracking-[0.4em] rounded-full">Exclusive // Access</span>
+                        <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85]">
+                            Behind <br />
+                            <span className="text-electric-blue italic font-light">The Scenes.</span>
                         </h1>
                     </div>
-                    <p className="text-gray-400 max-w-sm text-lg font-light leading-relaxed">
-                        Peek behind the curtain of our high-production sets, strategy sessions, and creative chaos.
-                    </p>
                 </div>
             </section>
 
-            {/* Hero Asset for BTS */}
-            <section className="px-6 pb-32 max-w-7xl mx-auto">
-                <div className="relative aspect-video rounded-[3rem] overflow-hidden border border-white/10 group">
-                    <Image
-                        src="/Stop.png"
-                        alt="Process Hero"
-                        fill
-                        className="object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#05070a] via-transparent to-transparent" />
-                    <div className="absolute bottom-12 left-12">
-                        <h3 className="text-3xl font-black uppercase tracking-tighter">On Location: Mumbai</h3>
-                        <p className="text-gray-400 uppercase tracking-widest text-xs mt-2">Commercial Production // Q4 2024</p>
+            {/* Main Story Section */}
+            <section className="px-6 pb-20 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div className="space-y-8">
+                    <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter italic leading-none">
+                        Where the real <br /> magic happens.
+                    </h2>
+                    <div className="space-y-6 text-base md:text-lg text-gray-600 font-light leading-relaxed">
+                        <p>
+                            BTS by Tinted captures the raw, unfiltered energy of celebrity and ad model shoots.
+                            While the spotlight is on the final frame, we focus on the moments in between — the direction, the laughter, the glam, the chaos, and the craft that bring a production to life.
+                        </p>
+                        <p>
+                            From high-profile celebrity campaigns to premium brand shoots, we document exclusive behind-the-scenes content that builds anticipation, boosts engagement, and adds authenticity to your brand story.
+                        </p>
+                        <blockquote className="border-l-4 border-electric-blue pl-8 py-4 text-xl font-black italic text-black">
+                            "What happens off-camera is just as powerful as what makes the cut."
+                        </blockquote>
                     </div>
                 </div>
+                <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden bg-gray-100 shadow-2xl">
+                    <Image
+                        src="/bts.png"
+                        alt="BTS Production"
+                        fill
+                        className="object-fit"
+                    />
+                </div>
             </section>
 
-            {/* Grid of raw moments */}
-            <section className="py-20 px-6 max-w-7xl mx-auto">
-                <h2 className="text-3xl font-black uppercase tracking-tighter mb-12 border-l-4 border-electric-blue pl-6">Raw Captures</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {[1, 2, 3, 4, 5, 6].map((item) => (
-                        <div key={item} className="aspect-square relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/5 group">
-                            <div className="absolute inset-0 flex items-center justify-center text-gray-800 font-mono text-[10px] tracking-widest uppercase">
-                                [Moment_0{item}_Loading]
-                            </div>
-                            <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/10 to-transparent group-hover:opacity-0 transition-opacity" />
-                            <div className="absolute top-4 right-4 text-[10px] font-mono text-gray-500">03:4{item} PM</div>
-                        </div>
-                    ))}
+            {/* Quote / Highlight */}
+            <section className="py-20 px-6 bg-gray-50 text-black">
+                <div className="max-w-4xl mx-auto text-center space-y-8">
+                    <p className="text-electric-blue font-mono text-xs tracking-[0.4em] uppercase">The Impact</p>
+                    <h2 className="text-2xl md:text-4xl font-black uppercase tracking-tighter leading-tight">
+                        We document the process to <span className="italic font-light">Humanize</span> your brand and build <span className="text-electric-blue">Anticipation.</span>
+                    </h2>
+                </div>
+            </section>
+
+            {/* Secondary Asset */}
+            <section className="py-32 px-6 max-w-7xl mx-auto">
+                <div className="relative h-[600px] rounded-[4rem] overflow-hidden border border-black/5 group">
+                    <Image
+                        src="/Stop.png"
+                        alt="Process Story"
+                        fill
+                        className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    <div className="absolute bottom-12 left-12">
+                        <span className="text-electric-blue font-mono text-xs tracking-widest uppercase mb-2 block">Production Archive // ON-SITE</span>
+                        <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-white">Capturing the Chaos.</h3>
+                    </div>
                 </div>
             </section>
 

@@ -8,31 +8,31 @@ const services = [
     {
         id: "01",
         title: "Film & Photography",
-        desc: "High-end cinematic production and professional photography that captures the essence of your brand.",
+        desc: "Cinematic videos and powerful photography that don't just play—they captivate and convert.",
         image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80"
     },
     {
         id: "02",
         title: "Social Media Management",
-        desc: "Performance-driven strategies that amplify your reach and convert audiences into loyal customers.",
+        desc: "We don't just post—we build presence through storytelling, engagement, and consistent growth.",
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
     },
     {
         id: "03",
         title: "Graphic Design",
-        desc: "Seamless, high-performance digital experiences built with the latest technologies.",
+        desc: "Visuals that command attention. Bold, strategic, and unforgettable brand identities.",
         image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80"
     },
     {
         id: "04",
-        title: "Peformance Management",
-        desc: "Cutting-edge visual identities and artistic designs that set you apart from the competition.",
+        title: "Performance Management",
+        desc: "Data-driven marketing that scales ROI and turns clicks into measurable revenue.",
         image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80"
     },
     {
         id: "05",
         title: "Web Development",
-        desc: "Cutting-edge visual identities and artistic designs that set you apart from the competition.",
+        desc: "High-performing, SEO-friendly websites that design for performance and work hard for your business.",
         image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=800&q=80"
     }
 ];
@@ -45,8 +45,8 @@ export default function ModernServices() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-20 gap-8">
                     <div className="space-y-4">
-                        <h3 className="text-electric-blue font-mono text-[15px] tracking-[0.4em] uppercase">Our Expertise</h3>
-                        <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none text-black">
+                        <h3 className="text-electric-blue font-mono text-[13px] tracking-[0.4em] uppercase">Our Expertise</h3>
+                        <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none text-black">
                             Our <br /> <span className="text-gray-400 italic font-light pr-4">Services</span>
                         </h2>
                     </div>
@@ -68,13 +68,13 @@ export default function ModernServices() {
                                     <span className="text-xl md:text-2xl font-mono text-electric-blue/50 group-hover:text-electric-blue">
                                         {service.id}
                                     </span>
-                                    <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-gray-400 group-hover:text-black transition-colors duration-500">
+                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-gray-400 group-hover:text-black transition-colors duration-500">
                                         {service.title}
                                     </h3>
                                 </div>
 
                                 <div className="mt-6 md:mt-0 flex items-center gap-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-x-10 group-hover:translate-x-0 relative">
-                                    <p className="hidden md:block text-gray-600 max-w-sm text-right text-sm font-medium leading-relaxed">
+                                    <p className="hidden md:block text-black group-hover:text-black md:group-hover:text-white max-w-sm text-right text-base font-bold leading-relaxed drop-shadow-lg lg:mr-12">
                                         {service.desc}
                                     </p>
                                     <div className="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-electric-blue group-hover:border-electric-blue transition-all duration-500">
@@ -89,14 +89,14 @@ export default function ModernServices() {
                                             initial={{ opacity: 0, scale: 0.8, x: 50, rotate: 5 }}
                                             animate={{ opacity: 1, scale: 1, x: 0, rotate: 0 }}
                                             exit={{ opacity: 0, scale: 0.8, x: 50, rotate: 5 }}
-                                            className="fixed top-1/2 right-[2%] -translate-y-1/2 w-[280px] md:w-[350px] aspect-[3/4] rounded-2xl overflow-hidden pointer-events-none z-[1] hidden lg:block shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-black/5"
+                                            className="fixed top-1/2 right-[10%] -translate-y-1/2 w-[240px] md:w-[350px] aspect-[4/5] rounded-3xl overflow-hidden pointer-events-none z-[5] hidden lg:block shadow-[0_20px_80px_rgba(0,0,0,0.3)] border border-white/10"
                                         >
                                             <img
                                                 src={service.image}
                                                 alt={service.title}
-                                                className="w-full h-full object-cover"
+                                                className="w-full h-full object-cover brightness-[0.7] contrast-[1.1]"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                                         </motion.div>
                                     )}
                                 </AnimatePresence>

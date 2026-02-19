@@ -10,7 +10,7 @@ export default function Hero() {
                 <motion.div
                     animate={{ x: [0, -1000] }}
                     transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
-                    className="text-[20rem] font-black uppercase whitespace-nowrap italic text-black"
+                    className="text-[10rem] font-black uppercase whitespace-nowrap italic text-black"
                 >
                     Creative Mastery // Digital Dominance // Tinted Media //
                 </motion.div>

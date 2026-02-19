@@ -20,7 +20,7 @@ export default function Footer() {
                         height={260}
                         className="h-16 md:h-24 w-auto object-contain opacity-100 invert"
                     />
-                    <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter leading-[1] uppercase">
+                    <h2 className="text-3xl md:text-5xl font-black text-black tracking-tighter leading-[1] uppercase">
                         Start <br /> <span className="gradient-text italic pr-4">Something.</span>
                     </h2>
                 </div>
@@ -28,7 +28,7 @@ export default function Footer() {
                 <div className="flex flex-col justify-end items-start lg:items-end gap-6 pb-2">
                     <div className="space-y-1 lg:text-right">
                         <p className="text-gray-500 uppercase tracking-widest text-[10px] font-bold">Inquiries</p>
-                        <a href="mailto:hello@tintedmedia.co" className="text-xl md:text-3xl font-light hover:text-electric-blue transition-colors text-black">
+                        <a href="mailto:hello@tintedmedia.co" className="text-lg md:text-2xl font-light hover:text-electric-blue transition-colors text-black">
                             hello@tintedmedia.co
                         </a>
                     </div>

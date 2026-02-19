@@ -23,7 +23,7 @@ export default function ServicePage({ params }) {
 
             {/* HERO SECTION */}
             <section className="relative pt-40 pb-32 px-6 overflow-hidden min-h-screen flex flex-col justify-center">
-                <ServiceLens color="#0066ff" />
+                <ServiceLens color="#2a66ff" />
 
                 <div className="max-w-7xl mx-auto w-full relative z-10">
                     <motion.div

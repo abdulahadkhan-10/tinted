@@ -45,7 +45,7 @@ export default function ServiceLens({ color }) {
                 <ambientLight intensity={0.5} />
                 <pointLight position={[10, 10, 10]} intensity={1} />
                 <DistortionSphere color={color} />
-                <Environment preset="night" />
+                <Environment preset="city" />
             </Canvas>
         </div>
     );

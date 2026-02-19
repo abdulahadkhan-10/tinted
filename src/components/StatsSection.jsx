@@ -23,7 +23,7 @@ export default function StatsSection() {
                             viewport={{ once: true }}
                             className="magnetic text-center space-y-2 group cursor-pointer"
                         >
-                            <h4 className="text-4xl md:text-6xl font-black text-black tracking-tighter group-hover:text-electric-blue transition-colors duration-500">
+                            <h4 className="text-3xl md:text-5xl font-black text-black tracking-tighter group-hover:text-electric-blue transition-colors duration-500">
                                 {stat.value}
                             </h4>
                             <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-bold">

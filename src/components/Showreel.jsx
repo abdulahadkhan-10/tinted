@@ -36,7 +36,7 @@ export default function Showreel() {
                         <Play fill="white" className="w-10 h-10 md:w-12 md:h-12 text-white ml-2 relative z-10" />
                     </motion.div>
 
-                    <h2 className="text-6xl md:text-9xl font-black text-white uppercase tracking-tighter leading-none select-none drop-shadow-2xl">
+                    <h2 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none select-none drop-shadow-2xl">
                         Show<span className="text-gray-200 italic pr-4">reel</span>
                     </h2>
                 </div>

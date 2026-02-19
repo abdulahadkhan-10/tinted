@@ -1,52 +1,52 @@
 export const servicesData = {
+    'film-photography': {
+        title: "Film &",
+        subtitle: "Photography",
+        description: "We create cinematic videos that don’t just play — they captivate. Photography that makes you stop, stare, and remember.",
+        features: [
+            { title: 'Cinematic Production', desc: 'Brand films, reels, and ad creatives that convert.' },
+            { title: 'Visual Authority', desc: 'One powerful image says everything your brand needs.' },
+            { title: 'Conversion Focused', desc: 'Visual storytelling designed to turn viewers into customers.' }
+        ]
+    },
     'social-media-management': {
         title: "Social Media",
         subtitle: "Management",
-        description: "We don't just post content; we engineer influence. Our management strategy is built on cultural intelligence and rapid-response creativity.",
+        description: "We don’t just post — we build presence. Our strategies are built around engagement, storytelling, and consistent growth.",
         features: [
-            { title: 'Community Engineering', desc: 'Building tribes, not just follower counts.' },
-            { title: 'Platform Dominance', desc: 'Tailored content logic for TikTok, Reels, and beyond.' },
-            { title: 'Viral Velocity', desc: 'Maximizing reach through algorithmic precision.' }
+            { title: 'Community Engineering', desc: 'Turning followers into fans and fans into customers.' },
+            { title: 'Content Planning', desc: 'Strategic planning and creation for all social channels.' },
+            { title: 'Growth Analytics', desc: 'Monitoring performance to ensure sustainable expansion.' }
+        ]
+    },
+    'graphic-design': {
+        title: "Graphic",
+        subtitle: "Design",
+        description: "Design that doesn’t whisper — it commands attention. We craft visuals that are bold, strategic, and unforgettable.",
+        features: [
+            { title: 'Brand Identity', desc: 'Logos and visual systems that communicate instantly.' },
+            { title: 'Packaging Design', desc: 'Unforgettable physical and digital product visuals.' },
+            { title: 'Strategic Creatives', desc: 'Bridging creativity with clarity to command attention.' }
         ]
     },
     'performance-management': {
         title: "Performance",
         subtitle: "Management",
-        description: "Data-driven scaling for brands that demand measurable ROI. We optimize every dollar to ensure maximum conversion and sustained growth.",
+        description: "Clicks are cute. Conversions are better. We create data-driven marketing campaigns that maximize ROI.",
         features: [
-            { title: 'Ad-Stack Optimization', desc: 'High-performance paid media infrastructure.' },
-            { title: 'Conversion Logic', desc: 'Turning browsing behavior into transaction reality.' },
-            { title: 'ROAS Maximization', desc: 'Aggressive scaling strategies for top-tier brands.' }
+            { title: 'Funnel Optimization', desc: 'Reducing friction to maximize every click as potential revenue.' },
+            { title: 'Paid Ad Scaling', desc: 'Data-driven campaigns across all major advertising stacks.' },
+            { title: 'ROI Focus', desc: 'Measurable growth and real revenue are our only metrics.' }
         ]
     },
-    'content-creation': {
-        title: "Content",
-        subtitle: "Creation",
-        description: "Cinematic, thumb-stopping, and unmistakable. We create high-fidelity content that cuts through the noise and defines your brand's visual identity.",
+    'web-development': {
+        title: "Web",
+        subtitle: "Development",
+        description: "Your website is your digital first impression. We build high-performing, fast, and SEO-friendly mobile-optimized experiences.",
         features: [
-            { title: 'Cinematic Production', desc: 'Studio-grade visuals for the digital age.' },
-            { title: 'UGC Strategy', desc: 'Authentic content that builds immediate trust.' },
-            { title: 'Visual DNA', desc: 'Creating a unique aesthetic logic for your brand.' }
-        ]
-    },
-    'creative-production': {
-        title: "Creative",
-        subtitle: "Production",
-        description: "From concept to final master. Our production house handles the most complex creative challenges with military precision and artistic flair.",
-        features: [
-            { title: 'Global Campaigns', desc: 'End-to-end production for international markets.' },
-            { title: 'Mixed Media', desc: 'Blending 3D, live action, and motion design.' },
-            { title: 'Post-Mastering', desc: 'Elite editing, sound design, and color grading.' }
-        ]
-    },
-    'ugc-ads': {
-        title: "UGC",
-        subtitle: "Ads",
-        description: "The most powerful trust-building tool in digital marketing. We script, cast, and produce UGC that feels real but converts like a machine.",
-        features: [
-            { title: 'Cast Curation', desc: 'Matching the right faces to your target demographic.' },
-            { title: 'Direct Response', desc: 'Scripted for high conversion and low drop-off.' },
-            { title: 'High-Volume Iteration', desc: 'Testing hooks and angles at scale.' }
+            { title: 'Sleek Corporate', desc: 'Modern, responsive sites that define your digital presence.' },
+            { title: 'E-commerce Power', desc: 'Robust platforms built for high-performance sales.' },
+            { title: 'SEO Optimized', desc: 'Tailored to perform in search and design to convert.' }
         ]
     }
 };

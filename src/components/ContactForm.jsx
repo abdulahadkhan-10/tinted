@@ -13,7 +13,7 @@ export default function ContactForm() {
                 <div className="space-y-8">
                     <div className="space-y-4">
                         <h3 className="text-electric-blue font-mono text-[10px] tracking-[0.4em] uppercase">Connect</h3>
-                        <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none text-black">
+                        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-black">
                             Let's work <br /> <span className="text-gray-400 italic font-light">Together</span>
                         </h2>
                     </div>
