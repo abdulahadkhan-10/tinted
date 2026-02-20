@@ -26,18 +26,31 @@ export default function Footer() {
                 </div>
 
                 <div className="flex flex-col justify-end items-start lg:items-end gap-6 pb-2">
-                    <div className="space-y-1 lg:text-right">
-                        <p className="text-gray-500 uppercase tracking-widest text-[10px] font-bold">Inquiries</p>
-                        <a href="mailto:hello@tintedmedia.co" className="text-lg md:text-2xl font-light hover:text-electric-blue transition-colors text-black">
-                            hello@tintedmedia.co
-                        </a>
+                    <div className="flex flex-col md:flex-row gap-8 lg:justify-end">
+                        <div className="space-y-1 lg:text-right">
+                            <p className="text-gray-500 uppercase tracking-widest text-[10px] font-bold">Collaborations</p>
+                            <a href="mailto:collab@tintedmedia.com" className="text-lg md:text-xl font-light hover:text-electric-blue transition-colors text-black">
+                                collab@tintedmedia.com
+                            </a>
+                        </div>
+                        <div className="space-y-1 lg:text-right">
+                            <p className="text-gray-500 uppercase tracking-widest text-[10px] font-bold">Join Us</p>
+                            <a href="mailto:join@tintedmedia.com" className="text-lg md:text-xl font-light hover:text-electric-blue transition-colors text-black">
+                                join@tintedmedia.com
+                            </a>
+                        </div>
                     </div>
                     <div className="space-y-2 lg:text-right">
                         <p className="text-gray-500 uppercase tracking-widest text-[10px] font-bold">Connect</p>
                         <div className="flex gap-3">
-                            {[Instagram, Linkedin, Twitter, Mail].map((Icon, i) => (
-                                <Link key={i} href="#" className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all text-black">
-                                    <Icon size={18} />
+                            {[
+                                { Icon: Instagram, href: "https://www.instagram.com/tintedmedia.co?igsh=MjFpbGRtbHVsc2Qz" },
+                                { Icon: Linkedin, href: "#" },
+                                { Icon: Twitter, href: "#" },
+                                { Icon: Mail, href: "mailto:collab@tintedmedia.com" }
+                            ].map((item, i) => (
+                                <Link key={i} href={item.href} className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all text-black">
+                                    <item.Icon size={18} />
                                 </Link>
                             ))}
                         </div>

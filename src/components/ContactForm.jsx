@@ -20,11 +20,19 @@ export default function ContactForm() {
                     <p className="text-gray-600 max-w-md text-lg font-light leading-relaxed">
                         Ready to elevate your digital presence? Send us a message and our team will get back to you within 24 hours.
                     </p>
-                    <div className="space-y-4 pt-8">
-                        <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-gray-500">Fast Forward</p>
-                        <a href="mailto:hello@tintedmedia.co" className="text-2xl font-light hover:text-electric-blue transition-colors text-black">
-                            hello@tintedmedia.co
-                        </a>
+                    <div className="flex flex-col gap-6 pt-8">
+                        <div className="space-y-2">
+                            <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-gray-500">Collab</p>
+                            <a href="mailto:collab@tintedmedia.com" className="text-xl font-light hover:text-electric-blue transition-colors text-black">
+                                collab@tintedmedia.com
+                            </a>
+                        </div>
+                        <div className="space-y-2">
+                            <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-gray-500">Interview</p>
+                            <a href="mailto:join@tintedmedia.com" className="text-xl font-light hover:text-electric-blue transition-colors text-black">
+                                join@tintedmedia.com
+                            </a>
+                        </div>
                     </div>
                 </div>
 
