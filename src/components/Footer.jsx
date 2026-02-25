@@ -18,7 +18,7 @@ export default function Footer() {
                         alt="Tinted Media Logo"
                         width={600}
                         height={200}
-                        className="h-12 md:h-16 w-auto object-contain opacity-100 invert"
+                        className="h-12 md:h-16 w-auto object-contain opacity-100"
                     />
                     <h2 className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-[1] uppercase">
                         Start <br /> <span className="gradient-text italic pr-4">Something.</span>

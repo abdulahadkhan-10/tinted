@@ -12,7 +12,7 @@ export default function ContentGrid() {
             <Link href="/bts" className="group">
                 <motion.div
                     whileHover={{ y: -12 }}
-                    className="h-[600px] border border-black/5 bg-gray-50 relative overflow-hidden rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] flex flex-col justify-end p-10"
+                    className="h-[420px] border border-black/5 bg-gray-50 relative overflow-hidden rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] flex flex-col justify-end p-8"
                 >
                     {/* Background Image */}
                     <Image
@@ -29,7 +29,7 @@ export default function ContentGrid() {
                     <div className="absolute inset-0 border border-white/10 rounded-[2.5rem] pointer-events-none z-20" />
 
                     <div className="relative z-10 space-y-6">
-                       
+
 
                         <p className="text-gray-300 text-sm md:text-base font-light leading-relaxed max-w-sm">
                             Where the real magic happens — behind the scenes. We capture the raw energy and craft that bring high-profile productions to life.
@@ -49,7 +49,7 @@ export default function ContentGrid() {
             <Link href="/ugc" className="group">
                 <motion.div
                     whileHover={{ y: -12 }}
-                    className="h-[600px] border border-black/5 bg-gray-50 relative overflow-hidden rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] flex flex-col justify-end p-10"
+                    className="h-[420px] border border-black/5 bg-gray-50 relative overflow-hidden rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] flex flex-col justify-end p-8"
                 >
                     {/* Background Image */}
                     <Image
@@ -66,7 +66,7 @@ export default function ContentGrid() {
                     <div className="absolute inset-0 border border-white/10 rounded-[2.5rem] pointer-events-none z-20" />
 
                     <div className="relative z-10 space-y-6 text-left">
-                   
+
 
                         <p className="text-gray-300 text-sm md:text-base font-light leading-relaxed max-w-sm">
                             Real people. Real impact. We create authentic content that today's audience actually trusts, blending credibility with conversion.

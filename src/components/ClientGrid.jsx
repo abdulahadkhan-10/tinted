@@ -16,7 +16,7 @@ const clients = [
 
 export default function ClientGrid() {
     return (
-        <section className="py-32 bg-white px-6">
+        <section className="py-20 bg-white px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h3 className="text-electric-blue font-mono text-[12px] tracking-[0.4em] uppercase mb-4">Integrations</h3>

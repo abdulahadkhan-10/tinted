@@ -41,7 +41,7 @@ export default function ModernServices() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
     return (
-        <section className="py-32 bg-white relative overflow-hidden">
+        <section className="py-20 bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-20 gap-8">
                     <div className="space-y-4">

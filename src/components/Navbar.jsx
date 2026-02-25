@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
+import { ChevronDown, ChevronRight, Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
     { name: 'About', href: '/about' },
@@ -16,22 +16,34 @@ const navLinks = [
         ]
     },
     { name: 'Services', href: '/services' },
-    { name: 'UGC', href: '/ugc' },
     {
-        name: 'Contact',
+        name: 'Universe',
         href: '#',
         dropdown: [
-            { name: 'Inquiry', href: '/contact' },
-            { name: 'Collab', href: '/collab' },
-            { name: 'Careers', href: '/careers' }
+            { name: 'BTS', href: '/bts' },
+            {
+                name: 'Talent Management',
+                href: '#',
+                subDropdown: [
+                    { name: 'Creator/Influencer', href: '#' },
+                    { name: 'Actor', href: '#' },
+                    { name: 'UGC', href: '/ugc' }
+                ]
+            }
         ]
+    },
+    {
+        name: 'Contact',
+        href: '#contact',
     }
 ];
 
 export default function Navbar() {
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const [activeSubDropdown, setActiveSubDropdown] = useState(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeMobileAccordion, setActiveMobileAccordion] = useState(null);
+    const [activeMobileSubAccordion, setActiveMobileSubAccordion] = useState(null);
 
     // Prevent scroll when mobile menu is open
     useEffect(() => {
@@ -57,7 +69,7 @@ export default function Navbar() {
                             alt="Tinted Media Logo"
                             width={600}
                             height={200}
-                            className="w-full h-auto object-contain transition-transform group-hover:scale-105 invert"
+                            className="w-full h-auto object-contain transition-transform group-hover:scale-105"
                             priority
                         />
                     </Link>
@@ -93,17 +105,54 @@ export default function Navbar() {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                         transition={{ duration: 0.2 }}
-                                        className="absolute top-full left-1/2 -translate-x-1/2 w-48 bg-white border border-black/5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] backdrop-blur-xl p-2 overflow-hidden"
+                                        className="absolute top-full left-1/2 -translate-x-1/2 w-48 bg-white border border-black/5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] backdrop-blur-xl p-2"
                                     >
                                         <div className="flex flex-col gap-1">
                                             {item.dropdown.map((subItem) => (
-                                                <Link
+                                                <div
                                                     key={subItem.name}
-                                                    href={subItem.href}
-                                                    className="px-4 py-3 rounded-xl hover:bg-gray-50 text-[9px] uppercase tracking-[0.2em] font-bold text-gray-500 hover:text-electric-blue transition-all"
+                                                    className="relative"
+                                                    onMouseEnter={() => subItem.subDropdown && setActiveSubDropdown(subItem.name)}
+                                                    onMouseLeave={() => subItem.subDropdown && setActiveSubDropdown(null)}
+                                                    onClick={() => subItem.subDropdown && setActiveSubDropdown(activeSubDropdown === subItem.name ? null : subItem.name)}
                                                 >
-                                                    {subItem.name}
-                                                </Link>
+                                                    {subItem.subDropdown ? (
+                                                        <div className="px-4 py-3 rounded-xl hover:bg-gray-50 text-[9px] uppercase tracking-[0.2em] font-bold text-gray-500 hover:text-electric-blue transition-all flex items-center justify-between cursor-pointer">
+                                                            {subItem.name}
+                                                            <ChevronRight className="w-3 h-3" />
+                                                        </div>
+                                                    ) : (
+                                                        <Link
+                                                            href={subItem.href}
+                                                            className="px-4 py-3 rounded-xl hover:bg-gray-50 text-[9px] uppercase tracking-[0.2em] font-bold text-gray-500 hover:text-electric-blue transition-all block"
+                                                        >
+                                                            {subItem.name}
+                                                        </Link>
+                                                    )}
+
+                                                    <AnimatePresence>
+                                                        {subItem.subDropdown && activeSubDropdown === subItem.name && (
+                                                            <motion.div
+                                                                initial={{ opacity: 0, x: 10, scale: 0.95 }}
+                                                                animate={{ opacity: 1, x: 0, scale: 1 }}
+                                                                exit={{ opacity: 0, x: 10, scale: 0.95 }}
+                                                                className="absolute top-0 left-full ml-1 w-48 bg-white border border-black/5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] backdrop-blur-xl p-2 z-[120]"
+                                                            >
+                                                                <div className="flex flex-col gap-1">
+                                                                    {subItem.subDropdown.map((nestedItem) => (
+                                                                        <Link
+                                                                            key={nestedItem.name}
+                                                                            href={nestedItem.href}
+                                                                            className="px-4 py-3 rounded-xl hover:bg-gray-50 text-[9px] uppercase tracking-[0.2em] font-bold text-gray-500 hover:text-electric-blue transition-all"
+                                                                        >
+                                                                            {nestedItem.name}
+                                                                        </Link>
+                                                                    ))}
+                                                                </div>
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </div>
                                             ))}
                                         </div>
                                     </motion.div>
@@ -116,7 +165,7 @@ export default function Navbar() {
                 {/* Right Actions */}
                 <div className="flex items-center gap-4 z-[110]">
                     <Link
-                        href="/contact"
+                        href="#contact"
                         className="magnetic hidden lg:block group relative px-8 py-2.5 bg-black text-white text-xs font-black uppercase tracking-widest rounded-full overflow-hidden transition-all transform hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(0,0,0,0.1)]"
                     >
                         <span className="relative z-10">Enquire</span>
@@ -169,17 +218,55 @@ export default function Navbar() {
                                                         >
                                                             <div className="flex flex-col gap-3 pt-4 pl-4 border-l border-electric-blue/20 mb-2">
                                                                 {item.dropdown.map((subItem) => (
-                                                                    <Link
-                                                                        key={subItem.name}
-                                                                        href={subItem.href}
-                                                                        onClick={() => setIsMobileMenuOpen(false)}
-                                                                        className="flex items-center justify-between py-2 group"
-                                                                    >
-                                                                        <span className="text-sm font-bold uppercase tracking-widest text-gray-500 group-hover:text-black transition-colors">
-                                                                            {subItem.name}
-                                                                        </span>
-                                                                        <ArrowRight className="w-4 h-4 text-electric-blue opacity-50" />
-                                                                    </Link>
+                                                                    <div key={subItem.name}>
+                                                                        {subItem.subDropdown ? (
+                                                                            <div className="py-2">
+                                                                                <button
+                                                                                    onClick={() => setActiveMobileSubAccordion(activeMobileSubAccordion === subItem.name ? null : subItem.name)}
+                                                                                    className="w-full flex justify-between items-center group"
+                                                                                >
+                                                                                    <span className={`text-sm font-bold uppercase tracking-widest transition-colors ${activeMobileSubAccordion === subItem.name ? 'text-electric-blue' : 'text-gray-500 hover:text-black'}`}>
+                                                                                        {subItem.name}
+                                                                                    </span>
+                                                                                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${activeMobileSubAccordion === subItem.name ? 'rotate-180' : ''}`} />
+                                                                                </button>
+                                                                                <AnimatePresence>
+                                                                                    {activeMobileSubAccordion === subItem.name && (
+                                                                                        <motion.div
+                                                                                            initial={{ height: 0, opacity: 0 }}
+                                                                                            animate={{ height: 'auto', opacity: 1 }}
+                                                                                            exit={{ height: 0, opacity: 0 }}
+                                                                                            className="overflow-hidden mt-2"
+                                                                                        >
+                                                                                            <div className="flex flex-col gap-3 pl-4 border-l border-electric-blue/10">
+                                                                                                {subItem.subDropdown.map((nestedItem) => (
+                                                                                                    <Link
+                                                                                                        key={nestedItem.name}
+                                                                                                        href={nestedItem.href}
+                                                                                                        onClick={() => setIsMobileMenuOpen(false)}
+                                                                                                        className="text-[11px] font-bold uppercase tracking-widest text-gray-400 py-1"
+                                                                                                    >
+                                                                                                        {nestedItem.name}
+                                                                                                    </Link>
+                                                                                                ))}
+                                                                                            </div>
+                                                                                        </motion.div>
+                                                                                    )}
+                                                                                </AnimatePresence>
+                                                                            </div>
+                                                                        ) : (
+                                                                            <Link
+                                                                                href={subItem.href}
+                                                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                                                className="flex items-center justify-between py-2 group"
+                                                                            >
+                                                                                <span className="text-sm font-bold uppercase tracking-widest text-gray-500 group-hover:text-black transition-colors">
+                                                                                    {subItem.name}
+                                                                                </span>
+                                                                                <ArrowRight className="w-4 h-4 text-electric-blue opacity-50" />
+                                                                            </Link>
+                                                                        )}
+                                                                    </div>
                                                                 ))}
                                                             </div>
                                                         </motion.div>
@@ -221,7 +308,7 @@ export default function Navbar() {
                                     </a>
                                 </div>
                                 <Link
-                                    href="/contact"
+                                    href="#contact"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className="block w-full bg-black text-white text-center py-5 rounded-xl font-black uppercase tracking-[0.2em] text-[11px] hover:bg-electric-blue transition-colors shadow-lg"
                                 >

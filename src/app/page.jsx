@@ -34,7 +34,7 @@ export default function Home() {
       <ModernServices />
 
       {/* BTS & UGC with premium background */}
-      <section className="py-32 relative overflow-hidden bg-white">
+      <section className="py-16 md:py-24 relative overflow-hidden bg-white">
         {/* Cinematic Background Orbs */}
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-electric-blue/5 blur-[150px] rounded-full pointer-events-none z-0" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-electric-purple/5 blur-[150px] rounded-full pointer-events-none z-0" />
@@ -50,7 +50,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="relative z-10 px-6 max-w-7xl mx-auto mb-16">
+        <div className="relative z-10 px-6 max-w-7xl mx-auto mb-8">
           <h3 className="text-electric-blue font-mono text-[11px] tracking-[0.4em] uppercase mb-4">Originals</h3>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-[#05070a]">
             Content <br />

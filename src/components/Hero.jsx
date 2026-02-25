@@ -36,7 +36,7 @@ export default function Hero() {
                     alt="Tinted Media"
                     width={400}
                     height={120}
-                    className="mx-auto h-auto max-w-[80%] md:max-w-[400px] invert brightness-0"
+                    className="mx-auto h-auto max-w-[80%] md:max-w-[400px]"
                     priority
                 />
                 <p className="text-gray-600 mt-6 uppercase tracking-[0.5em] text-xs font-light">
