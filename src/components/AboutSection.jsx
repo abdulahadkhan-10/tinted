@@ -69,10 +69,10 @@ export default function AboutSection() {
                                     <span className="text-electric-blue font-mono text-xs tracking-[0.4em] uppercase">
                                         Phase // 0{index + 1}
                                     </span>
-                                    <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-[0.9] text-black">
+                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-[0.9] text-black">
                                         {chapter.highlight}
                                     </h3>
-                                    <p className="text-gray-500 text-base md:text-lg font-light leading-relaxed max-w-md">
+                                    <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed max-w-md">
                                         {chapter.text}
                                     </p>
                                 </motion.div>

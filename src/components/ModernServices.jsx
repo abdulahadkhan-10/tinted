@@ -45,8 +45,8 @@ export default function ModernServices() {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-20 gap-8">
                     <div className="space-y-4">
-                        <h3 className="text-electric-blue font-mono text-[13px] tracking-[0.4em] uppercase">Our Expertise</h3>
-                        <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none text-black">
+                        <h3 className="text-electric-blue font-mono text-[11px] tracking-[0.4em] uppercase">Our Expertise</h3>
+                        <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-black">
                             Our <br /> <span className="text-gray-400 italic font-light pr-4">Services</span>
                         </h2>
                     </div>
@@ -62,22 +62,22 @@ export default function ModernServices() {
                             <motion.div
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
-                                className="magnetic group relative border-b border-black/10 py-12 md:py-16 cursor-pointer flex flex-col md:flex-row md:items-center justify-between transition-all duration-500"
+                                className="magnetic group relative border-b border-black/10 py-10 md:py-12 cursor-pointer flex flex-col md:flex-row md:items-center justify-between transition-all duration-500"
                             >
                                 <div className="flex items-center gap-8 md:gap-16 z-10 transition-transform duration-500 group-hover:translate-x-4">
-                                    <span className="text-xl md:text-2xl font-mono text-electric-blue/50 group-hover:text-electric-blue">
+                                    <span className="text-lg md:text-xl font-mono text-electric-blue/50 group-hover:text-electric-blue">
                                         {service.id}
                                     </span>
-                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-gray-400 group-hover:text-black transition-colors duration-500">
+                                    <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter text-gray-400 group-hover:text-black transition-colors duration-500">
                                         {service.title}
                                     </h3>
                                 </div>
 
                                 <div className="mt-6 md:mt-0 flex items-center gap-6 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-x-10 group-hover:translate-x-0 relative">
-                                    <p className="hidden md:block text-black group-hover:text-black md:group-hover:text-white max-w-sm text-right text-base font-bold leading-relaxed drop-shadow-lg lg:mr-12">
+                                    <p className="hidden md:block text-black group-hover:text-black md:group-hover:text-white max-w-sm text-right text-xs font-bold leading-relaxed drop-shadow-lg lg:mr-12">
                                         {service.desc}
                                     </p>
-                                    <div className="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-electric-blue group-hover:border-electric-blue transition-all duration-500">
+                                    <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-electric-blue group-hover:border-electric-blue transition-all duration-500">
                                         <ArrowRight className="text-black group-hover:text-white group-hover:rotate-[-45deg] transition-all duration-500" />
                                     </div>
                                 </div>

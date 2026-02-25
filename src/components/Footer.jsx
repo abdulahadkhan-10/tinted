@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <footer className="w-full bg-white border-t border-gray-100 pt-32 pb-10 px-6 relative overflow-hidden">
             {/* Massive Background Text */}
-            <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 text-[15vw] font-black text-black/[0.02] tracking-tighter select-none pointer-events-none uppercase">
+            <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 text-[10vw] font-black text-black/[0.02] tracking-tighter select-none pointer-events-none uppercase">
                 Tinted Media
             </div>
 
@@ -16,11 +16,11 @@ export default function Footer() {
                     <Image
                         src="/logo (1).png"
                         alt="Tinted Media Logo"
-                        width={800}
-                        height={260}
-                        className="h-16 md:h-24 w-auto object-contain opacity-100 invert"
+                        width={600}
+                        height={200}
+                        className="h-12 md:h-16 w-auto object-contain opacity-100 invert"
                     />
-                    <h2 className="text-3xl md:text-5xl font-black text-black tracking-tighter leading-[1] uppercase">
+                    <h2 className="text-2xl md:text-4xl font-black text-black tracking-tighter leading-[1] uppercase">
                         Start <br /> <span className="gradient-text italic pr-4">Something.</span>
                     </h2>
                 </div>

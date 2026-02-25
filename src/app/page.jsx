@@ -44,15 +44,15 @@ export default function Home() {
           <motion.div
             animate={{ x: [-1000, 0] }}
             transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
-            className="text-[8rem] font-black uppercase whitespace-nowrap text-black"
+            className="text-[6rem] font-black uppercase whitespace-nowrap text-black"
           >
             ORIGINALS // UNFILTERED // AUTHENTIC // BEYOND //
           </motion.div>
         </div>
 
         <div className="relative z-10 px-6 max-w-7xl mx-auto mb-16">
-          <h3 className="text-electric-blue font-mono text-[13px] tracking-[0.4em] uppercase mb-4">Originals</h3>
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-[#05070a]">
+          <h3 className="text-electric-blue font-mono text-[11px] tracking-[0.4em] uppercase mb-4">Originals</h3>
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-[#05070a]">
             Content <br />
             <span className="text-gray-400 italic font-light">Universe</span>
           </h2>

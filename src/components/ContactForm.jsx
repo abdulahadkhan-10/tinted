@@ -13,11 +13,11 @@ export default function ContactForm() {
                 <div className="space-y-8">
                     <div className="space-y-4">
                         <h3 className="text-electric-blue font-mono text-[10px] tracking-[0.4em] uppercase">Connect</h3>
-                        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none text-black">
+                        <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-black">
                             Let's work <br /> <span className="text-gray-400 italic font-light">Together</span>
                         </h2>
                     </div>
-                    <p className="text-gray-600 max-w-md text-lg font-light leading-relaxed">
+                    <p className="text-gray-600 max-w-md text-sm font-light leading-relaxed">
                         Ready to elevate your digital presence? Send us a message and our team will get back to you within 24 hours.
                     </p>
                     <div className="flex flex-col gap-6 pt-8">

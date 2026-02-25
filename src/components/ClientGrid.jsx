@@ -3,10 +3,15 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const clients = [
-    "NIVEA", "OPPO", "TITAN", "REDBULL",
-    "PEPSI", "ADIDAS", "ZEB-TECH", "SONY",
-    "NETFLIX", "GUCCI", "PRADA", "BMW",
-    "AUDI", "NIKE", "PUMA", "NESTLE"
+    { name: "Dot & Key", src: "/sponsers/Dot-_-Key-Logo.webp" },
+    { name: "Renee", src: "/sponsers/Renee logo .webp" },
+    { name: "Vodafone", src: "/sponsers/Vodafone logo .png" },
+    { name: "Davines", src: "/sponsers/davines logo .png" },
+    { name: "Nivea", src: "/sponsers/nivea logo .png" },
+    { name: "Oppo", src: "/sponsers/oppo logo .png" },
+    { name: "Palmonas", src: "/sponsers/palmonas logo .webp" },
+    { name: "Plix", src: "/sponsers/plix logo .png" },
+    { name: "Vaaree", src: "/sponsers/vaaree logo .png" },
 ];
 
 export default function ClientGrid() {
@@ -14,13 +19,13 @@ export default function ClientGrid() {
         <section className="py-32 bg-white px-6">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h3 className="text-electric-blue font-mono text-[15px] tracking-[0.4em] uppercase mb-4">Integrations</h3>
-                    <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-foreground">
+                    <h3 className="text-electric-blue font-mono text-[12px] tracking-[0.4em] uppercase mb-4">Integrations</h3>
+                    <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-foreground">
                         Global <span className="text-gray-400 italic font-light">Network</span>
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-2 lg:grid-cols-4 border-t border-l border-black/5">
+                <div className="grid grid-cols-2 lg:grid-cols-3 border-t border-l border-black/5">
                     {clients.map((client, idx) => (
                         <motion.div
                             key={idx}
@@ -28,12 +33,14 @@ export default function ClientGrid() {
                             whileInView={{ opacity: 1 }}
                             transition={{ delay: idx * 0.05 }}
                             viewport={{ once: true }}
-                            className="h-40 border-r border-b border-black/5 flex items-center justify-center group relative overflow-hidden"
+                            className="h-40 border-r border-b border-black/5 flex items-center justify-center group relative overflow-hidden p-8"
                         >
                             <div className="absolute inset-0 bg-black/[0.02] translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                            <span className="text-2xl md:text-3xl font-black text-black/10 group-hover:text-foreground transition-all duration-500 tracking-tighter uppercase italic z-10">
-                                {client}
-                            </span>
+                            <img
+                                src={client.src}
+                                alt={client.name}
+                                className="max-w-full max-h-full object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 z-10 p-4"
+                            />
                         </motion.div>
                     ))}
                 </div>

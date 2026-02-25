@@ -10,7 +10,7 @@ export default function Hero() {
                 <motion.div
                     animate={{ x: [0, -1000] }}
                     transition={{ repeat: Infinity, duration: 50, ease: "linear" }}
-                    className="text-[10rem] font-black uppercase whitespace-nowrap italic text-black"
+                    className="text-[8rem] font-black uppercase whitespace-nowrap italic text-black"
                 >
                     Creative Mastery // Digital Dominance // Tinted Media //
                 </motion.div>
@@ -22,8 +22,8 @@ export default function Hero() {
 
 
             {/* Background Decorative Elements */}
-            <div className="absolute top-1/4 left-10 w-96 h-96 bg-electric-blue/10 blur-[120px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-electric-purple/10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/4 left-10 w-64 h-64 bg-electric-blue/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-1/4 right-10 w-64 h-64 bg-electric-purple/10 blur-[100px] rounded-full pointer-events-none" />
 
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -34,12 +34,12 @@ export default function Hero() {
                 <Image
                     src="/logo (2).png"
                     alt="Tinted Media"
-                    width={450}
-                    height={150}
-                    className="mx-auto h-auto max-w-[80%] md:max-w-[450px] invert brightness-0"
+                    width={400}
+                    height={120}
+                    className="mx-auto h-auto max-w-[80%] md:max-w-[400px] invert brightness-0"
                     priority
                 />
-                <p className="text-gray-600 mt-6 uppercase tracking-[0.5em] text-sm font-light">
+                <p className="text-gray-600 mt-6 uppercase tracking-[0.5em] text-xs font-light">
                     Your Vision Perfectly <span className="text-foreground font-bold">Tinted</span>
                 </p>
             </motion.div>

@@ -14,6 +14,10 @@
 
   --glass: rgba(0, 0, 0, 0.03);
   --glass-border: rgba(0, 0, 0, 0.08);
+
+  /* Fonts */
+  --font-body: 'Glacial Indifference', sans-serif;
+  --font-heading: 'FreightPro', serif;
 }
 
 @theme inline {
@@ -24,20 +28,45 @@
   --color-electric-purple: var(--electric-purple);
   --color-neon-lime: var(--neon-lime);
 
-  --font-sans: 'Outfit', sans-serif;
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading);
 }
 
 html {
   background: #ffffff !important;
   scroll-behavior: smooth;
+  font-size: 15px;
+  /* Slightly reduced base font size */
 }
 
 body {
   background: #ffffff !important;
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+
+p,
+span,
+a,
+li,
+button {
+  font-family: var(--font-body);
 }
 
 @keyframes float {
