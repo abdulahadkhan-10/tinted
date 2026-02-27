@@ -95,68 +95,50 @@ export default function AboutSection() {
             ────────────────────────────────────────────────── */}
             <div className="sticky top-0 h-screen w-full pointer-events-none" style={{ zIndex: 1 }}>
 
-                {/* Background Color Wipes */}
+                {/* ──────────────────────────────────────────────────
+                    STICKY LAYER — integrated background + cup wipe
+                ────────────────────────────────────────────────── */}
                 <div className="absolute inset-0 overflow-hidden">
-                    {sections.map((section, index) => {
+                    {[...sections, { id: "cta-wipe", bgColor: sections[sections.length - 1].bgColor, isBlank: true }].map((section, index) => {
                         const totalSegments = sections.length + 1;
                         const start = index / totalSegments;
                         const end = (index + 0.4) / totalSegments;
 
                         // eslint-disable-next-line react-hooks/rules-of-hooks
                         const y = useTransform(smoothProgress, [start, end], ["100%", "0%"]);
+                        // INVERSE transform to keep the cup stationary so it looks like it is being revealed
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
+                        const yInverse = useTransform(smoothProgress, [start, end], ["-100%", "0%"]);
 
                         return (
                             <motion.div
                                 key={section.id}
-                                className="absolute inset-0"
+                                className="absolute inset-0 overflow-hidden"
                                 style={{
                                     backgroundColor: section.bgColor,
                                     zIndex: index,
                                     y: index === 0 ? 0 : y
                                 }}
-                            />
+                            >
+                                {!section.isBlank && (
+                                    <motion.div
+                                        className="absolute top-0 right-0 w-full lg:w-2/5 h-full flex items-center justify-center p-8 lg:p-12"
+                                        style={{
+                                            y: index === 0 ? 0 : yInverse
+                                        }}
+                                    >
+                                        <div className="relative w-full aspect-square max-w-[500px]">
+                                            <img
+                                                src={section.image}
+                                                alt={section.title}
+                                                className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                                            />
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </motion.div>
                         );
                     })}
-                    <div className="absolute inset-0" style={{ backgroundColor: sections[sections.length - 1].bgColor, zIndex: -1 }} />
-                </div>
-
-                {/* Cup Mockups — ABOVE background wipes */}
-                <div
-                    className="absolute top-0 right-0 w-full lg:w-2/5 h-full flex items-center justify-center"
-                    style={{ zIndex: sections.length + 1 }}
-                >
-                    <div className="relative w-full aspect-square max-w-[500px] p-8">
-                        {sections.map((section, index) => {
-                            const totalSegments = sections.length + 1;
-                            const segmentSize = 1 / totalSegments;
-                            const start = index * segmentSize;
-                            const end = (index + 1) * segmentSize;
-
-                            // SHARP TRANSITION: No crossfade, just instant swap
-                            const opacity = useTransform(
-                                smoothProgress,
-                                [start, start + 0.001, end - 0.001, end],
-                                [0, 1, 1, 0]
-                            );
-
-                            return (
-                                <motion.div
-                                    key={section.id}
-                                    className="absolute inset-0 flex items-center justify-center p-8"
-                                    style={{
-                                        opacity,
-                                        willChange: "opacity",
-                                    }}
-                                >
-                                    <img
-                                        src={section.image}
-                                        alt={section.title}
-                                        className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
-                                    />
-                                </motion.div>
-                            );
-                        })}
-                    </div>
                 </div>
             </div>
 
