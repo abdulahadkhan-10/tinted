@@ -154,15 +154,18 @@ export default function AboutSection() {
                         const end = (index + 1) * segmentSize;
 
                         // Text stays fully visible until the very last moment of the segment
+                        // For the first section (About), we want it visible immediately
                         // eslint-disable-next-line react-hooks/rules-of-hooks
                         const opacity = useTransform(
                             smoothProgress,
-                            [start, start + 0.01, end - 0.01, end],
+                            index === 0
+                                ? [0, 0, end - 0.01, end]
+                                : [start, start + 0.01, end - 0.01, end],
                             [0, 1, 1, 0]
                         );
 
                         return (
-                            <div key={section.id} className={`${index === 0 ? "pt-32" : "pt-40"} h-[150vh] flex flex-col justify-start`}>
+                            <div key={section.id} className={`${index === 0 ? "pt-10" : "pt-40"} h-[150vh] flex flex-col justify-start`}>
                                 <motion.div
                                     style={{ opacity }}
                                     className={`max-w-xl space-y-8 ${section.textColor}`}
