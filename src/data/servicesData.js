@@ -2,6 +2,8 @@ export const servicesData = {
     'film-photography': {
         title: "Film &",
         subtitle: "Photography",
+        image: "/services/film.jpg",
+        color: "#2a66ff",
         description: "We create cinematic videos that don’t just play — they captivate. Photography that makes you stop, stare, and remember.",
         features: [
             { title: 'Cinematic Production', desc: 'Brand films, reels, and ad creatives that convert.' },
@@ -12,6 +14,8 @@ export const servicesData = {
     'social-media-management': {
         title: "Social Media",
         subtitle: "Management",
+        image: "/services/social media.jpg",
+        color: "#6366f1",
         description: "We don’t just post — we build presence. Our strategies are built around engagement, storytelling, and consistent growth.",
         features: [
             { title: 'Community Engineering', desc: 'Turning followers into fans and fans into customers.' },
@@ -22,6 +26,8 @@ export const servicesData = {
     'graphic-design': {
         title: "Graphic",
         subtitle: "Design",
+        image: "/services/gd copy.jpg",
+        color: "#ef4444",
         description: "Design that doesn’t whisper — it commands attention. We craft visuals that are bold, strategic, and unforgettable.",
         features: [
             { title: 'Brand Identity', desc: 'Logos and visual systems that communicate instantly.' },
@@ -32,6 +38,8 @@ export const servicesData = {
     'performance-management': {
         title: "Performance",
         subtitle: "Management",
+        image: "/services/pa.jpg",
+        color: "#10b981",
         description: "Clicks are cute. Conversions are better. We create data-driven marketing campaigns that maximize ROI.",
         features: [
             { title: 'Funnel Optimization', desc: 'Reducing friction to maximize every click as potential revenue.' },
@@ -42,6 +50,8 @@ export const servicesData = {
     'web-development': {
         title: "Web",
         subtitle: "Development",
+        image: "/services/web.jpg",
+        color: "#0f172a",
         description: "Your website is your digital first impression. We build high-performing, fast, and SEO-friendly mobile-optimized experiences.",
         features: [
             { title: 'Sleek Corporate', desc: 'Modern, responsive sites that define your digital presence.' },

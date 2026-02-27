@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import VideoCarousel from "@/components/VideoCarousel";
 import AboutSection from "@/components/AboutSection";
-import ModernServices from "@/components/ModernServices";
 import ContentGrid from "@/components/ContentGrid";
 import ClientGrid from "@/components/ClientGrid";
 import StatsSection from "@/components/StatsSection";
@@ -29,9 +28,6 @@ export default function Home() {
       <Showreel />
 
       <AboutSection />
-
-      {/* NEW: Futuristic Modern Services List */}
-      <ModernServices />
 
       {/* BTS & UGC with premium background */}
       <section className="py-16 md:py-24 relative overflow-hidden bg-white">

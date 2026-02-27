@@ -1,9 +1,78 @@
 "use client";
 import { useRef } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import Lens3D from "./Lens3D";
+
+const sections = [
+    {
+        id: "about",
+        title: "About",
+        phonetic: "/əˈbaʊt/",
+        subtitle: "The Identity",
+        content: "Tinted Media is where strategy meets story — and where brands come to stand out. We're a modern creative and media agency crafting culture-driven campaigns, unforgettable narratives, and content designed to make people stop, look, and engage.",
+        quote: "Because looking good isn't enough anymore. You have to mean something.",
+        image: "/journey/cup_empty.png",
+        bgColor: "#ffffff",
+        textColor: "text-black",
+        labelColor: "text-electric-blue"
+    },
+    {
+        id: "film",
+        title: "Film & Photography",
+        phonetic: "/fɪlm & ˈfoʊ.toʊ/",
+        subtitle: "01 // Production",
+        content: "Cinematic videos and powerful photography that don't just play—they captivate and convert. We blend sharp strategy with bold storytelling to build identities people remember.",
+        image: "/journey/cup_film.png",
+        bgColor: "#000000",
+        textColor: "text-white",
+        labelColor: "text-cyan-400"
+    },
+    {
+        id: "social",
+        title: "Social Media Management",
+        phonetic: "/ˈsoʊ.ʃəlz/",
+        subtitle: "02 // Engagement",
+        content: "We don't just post—we build presence through storytelling, engagement, and consistent growth. We turn digital noise into real influence.",
+        image: "/journey/cup_social.png",
+        bgColor: "#6366f1",
+        textColor: "text-white",
+        labelColor: "text-white/80"
+    },
+    {
+        id: "design",
+        title: "Graphic Design",
+        phonetic: "/dɪˈzaɪn/",
+        subtitle: "03 // Branding",
+        content: "Visuals that command attention. Bold, strategic, and unforgettable brand identities. Thoughtful. Bold. A little rebellious.",
+        image: "/journey/cup_design.png",
+        bgColor: "#ef4444",
+        textColor: "text-white",
+        labelColor: "text-white/80"
+    },
+    {
+        id: "performance",
+        title: "Performance Management",
+        phonetic: "/pərˈfɔːr.məns/",
+        subtitle: "04 // Analytics",
+        content: "Data-driven marketing that scales ROI and turns clicks into measurable revenue. We don't chase the digital pulse. We create it.",
+        image: "/journey/cup_performance.png",
+        bgColor: "#10b981",
+        textColor: "text-white",
+        labelColor: "text-white/80"
+    },
+    {
+        id: "web",
+        title: "Web Development",
+        phonetic: "/dɪˈvɛl.əp.mənt/",
+        subtitle: "05 // Digital",
+        content: "High-performing, SEO-friendly websites that design for performance and work hard for your business. Blending art with analytics.",
+        image: "/journey/cup_web.png",
+        bgColor: "#0f172a",
+        textColor: "text-white",
+        labelColor: "text-cyan-300"
+    }
+];
 
 export default function AboutSection() {
     const containerRef = useRef(null);
@@ -12,96 +81,165 @@ export default function AboutSection() {
         offset: ["start start", "end end"]
     });
 
-    // Story chapters data
-    const chapters = [
-        {
-            title: "The Identity",
-            text: "Tinted Media is where strategy meets story—and where brands come to stand out. Born to challenge the ordinary, we turn digital noise into real influence.",
-            highlight: "Strategy Meets Story"
-        },
-        {
-            title: "The Craft",
-            text: "We’re a modern creative agency crafting culture-driven campaigns and narratives designed to make people stop, look, and engage. We craft every brand with intention.",
-            highlight: "Crafted With Intention"
-        },
-        {
-            title: "The Pulse",
-            text: "Thoughtful. Bold. A little rebellious. We don't chase the digital pulse—we create it. We're built for brands that refuse to blend in.",
-            highlight: "We Create the Pulse"
-        }
-    ];
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
 
     return (
-        <section ref={containerRef} className="relative w-full bg-white">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="flex flex-col lg:flex-row gap-10 items-start">
+        <section ref={containerRef} className="relative w-full">
 
-                    {/* LEFT: STICKY VISUAL */}
-                    <div className="w-full lg:w-1/2 sticky top-0 h-[60vh] lg:h-screen flex items-center justify-center z-10">
-                        <div className="relative w-full aspect-square max-w-[650px] flex items-center justify-center">
+            {/* ──────────────────────────────────────────────────
+                STICKY LAYER — backgrounds + cup in ONE container
+            ────────────────────────────────────────────────── */}
+            <div className="sticky top-0 h-screen w-full pointer-events-none" style={{ zIndex: 1 }}>
 
-                            {/* Background Glow */}
-                            <div className="absolute inset-0 bg-electric-blue/5 blur-[100px] rounded-full opacity-30" />
+                {/* Background Color Wipes */}
+                <div className="absolute inset-0 overflow-hidden">
+                    {sections.map((section, index) => {
+                        const totalSegments = sections.length + 1;
+                        const start = index / totalSegments;
+                        const end = (index + 0.4) / totalSegments;
 
-                            {/* 3D Core */}
-                            <div className="w-full h-full">
-                                <Lens3D scrollProgress={scrollYProgress} />
-                            </div>
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
+                        const y = useTransform(smoothProgress, [start, end], ["100%", "0%"]);
 
-
-                        </div>
-                    </div>
-
-                    {/* RIGHT: SCROLLING CONTENT */}
-                    <div className="w-full lg:w-1/2">
-                        {/* Initial Spacer to allow visual to be seen alone */}
-                        <div className="h-[20vh] lg:h-[40vh]" />
-
-                        {chapters.map((chapter, index) => (
-                            <div key={index} className="min-h-screen flex flex-col justify-center py-20">
-                                <motion.div
-                                    initial={{ opacity: 0, x: 20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                    viewport={{ amount: 0.6 }}
-                                    className="space-y-8"
-                                >
-                                    <span className="text-electric-blue font-mono text-xs tracking-[0.4em] uppercase">
-                                        Phase // 0{index + 1}
-                                    </span>
-                                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-[0.9] text-black">
-                                        {chapter.highlight}
-                                    </h3>
-                                    <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed max-w-md">
-                                        {chapter.text}
-                                    </p>
-                                </motion.div>
-                            </div>
-                        ))}
-
-                        {/* FINAL CTA */}
-                        <div className="h-screen flex items-center pt-20">
+                        return (
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                className="space-y-10"
-                            >
-                                <h3 className="text-4xl font-black uppercase tracking-tighter text-black">
-                                    Ready to see <br /> the full <span className="text-electric-blue italic font-light">picture?</span>
-                                </h3>
-                                <Link
-                                    href="/about"
-                                    className="magnetic group relative inline-flex items-center gap-6 px-12 py-6 bg-black text-white font-black text-sm uppercase tracking-widest rounded-full overflow-hidden transition-all shadow-2xl"
+                                key={section.id}
+                                className="absolute inset-0"
+                                style={{
+                                    backgroundColor: section.bgColor,
+                                    zIndex: index,
+                                    y: index === 0 ? 0 : y
+                                }}
+                            />
+                        );
+                    })}
+                    <div className="absolute inset-0" style={{ backgroundColor: sections[sections.length - 1].bgColor, zIndex: -1 }} />
+                </div>
+
+                {/* Cup Mockups — ABOVE background wipes */}
+                <div
+                    className="absolute top-0 right-0 w-full lg:w-2/5 h-full flex items-center justify-center"
+                    style={{ zIndex: sections.length + 1 }}
+                >
+                    <div className="relative w-full aspect-square max-w-[500px] p-8">
+                        {sections.map((section, index) => {
+                            const totalSegments = sections.length + 1;
+                            const segmentSize = 1 / totalSegments;
+                            const start = index * segmentSize;
+                            const end = (index + 1) * segmentSize;
+
+                            // SYNCED TIMING: Wait until we are in the section to swap
+                            const fadeInStart = index === 0 ? -0.1 : start + (segmentSize * 0.1);
+                            const fadeInEnd = index === 0 ? 0.05 : start + (segmentSize * 0.4);
+                            const fadeOutStart = end - (segmentSize * 0.2);
+                            const fadeOutEnd = end;
+
+                            // eslint-disable-next-line react-hooks/rules-of-hooks
+                            const opacity = useTransform(
+                                smoothProgress,
+                                [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
+                                [0, 1, 1, 0]
+                            );
+
+                            return (
+                                <motion.div
+                                    key={section.id}
+                                    className="absolute inset-0 flex items-center justify-center p-8"
+                                    style={{
+                                        opacity,
+                                        willChange: "opacity",
+                                    }}
                                 >
-                                    <span className="relative z-10 flex items-center gap-2">
-                                        Learn Our Story <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                    <img
+                                        src={section.image}
+                                        alt={section.title}
+                                        className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                                    />
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+
+            {/* ──────────────────────────────────────────────
+                SCROLLING TEXT CONTENT
+            ────────────────────────────────────────────── */}
+            <div className="relative" style={{ zIndex: 2 }}>
+                <div className="w-full lg:w-3/5 px-8 md:px-16 lg:px-24">
+                    {sections.map((section, index) => (
+                        <div key={section.id} className={`${index === 0 ? "pt-20 pb-40" : "py-40"} h-[80vh] flex flex-col justify-center`}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                viewport={{ amount: 0.5 }}
+                                className={`max-w-xl space-y-8 ${section.textColor}`}
+                            >
+                                <div className="space-y-2">
+                                    <span className={`font-mono text-xs uppercase tracking-[0.4em] ${section.labelColor}`}>
+                                        {section.subtitle}
                                     </span>
-                                    <div className="absolute inset-0 bg-electric-blue transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                                </Link>
+                                    <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4">
+                                        <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+                                            {section.title}
+                                        </h2>
+                                        <span className="font-serif italic text-xl md:text-2xl opacity-50">
+                                            {section.phonetic}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <p className="text-lg md:text-xl font-light leading-relaxed opacity-90">
+                                    {section.content}
+                                </p>
+
+                                {section.quote && (
+                                    <blockquote className="border-l-4 border-electric-blue pl-6 py-2">
+                                        <p className="text-xl md:text-2xl font-black italic uppercase leading-tight">
+                                            {section.quote}
+                                        </p>
+                                    </blockquote>
+                                )}
                             </motion.div>
                         </div>
-                    </div>
+                    ))}
 
+                    {/* ── CTA Block ─────────────────── */}
+                    <div className="h-[80vh] flex flex-col justify-center py-20 lg:py-32">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            viewport={{ amount: 0.5 }}
+                            className="max-w-xl space-y-8 text-white"
+                        >
+                            <span className="font-mono text-xs uppercase tracking-[0.4em] text-cyan-300">
+                                Discover More
+                            </span>
+                            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none">
+                                Want to know{" "}
+                                <span className="italic font-light">more about us?</span>
+                            </h2>
+                            <p className="text-lg md:text-xl font-light leading-relaxed text-white/70">
+                                Dive deeper into our story, meet the founder, and see what makes Tinted Media different.
+                            </p>
+                            <Link
+                                href="/about"
+                                className="magnetic group relative inline-flex items-center gap-4 px-10 py-5 bg-white text-black font-black text-xs uppercase tracking-widest rounded-full overflow-hidden transition-all hover:shadow-2xl"
+                            >
+                                <span className="relative z-10 flex items-center gap-2">
+                                    Visit Full About Us Page
+                                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                </span>
+                                <div className="absolute inset-0 bg-electric-blue transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+                            </Link>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

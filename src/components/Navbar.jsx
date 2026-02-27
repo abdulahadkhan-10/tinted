@@ -15,7 +15,17 @@ const navLinks = [
             { name: 'Client Work', href: '/work' }
         ]
     },
-    { name: 'Services', href: '/services' },
+    {
+        name: 'Services',
+        href: '#',
+        dropdown: [
+            { name: 'Film & Photography', href: '/services/film-photography' },
+            { name: 'Social Media Management', href: '/services/social-media-management' },
+            { name: 'Graphic Design', href: '/services/graphic-design' },
+            { name: 'Performance Management', href: '/services/performance-management' },
+            { name: 'Web Development', href: '/services/web-development' }
+        ]
+    },
     {
         name: 'Universe',
         href: '#',
@@ -105,7 +115,7 @@ export default function Navbar() {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                         transition={{ duration: 0.2 }}
-                                        className="absolute top-full left-1/2 -translate-x-1/2 w-48 bg-white border border-black/5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] backdrop-blur-xl p-2"
+                                        className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-black/5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] backdrop-blur-xl p-2"
                                     >
                                         <div className="flex flex-col gap-1">
                                             {item.dropdown.map((subItem) => (

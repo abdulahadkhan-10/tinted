@@ -21,9 +21,8 @@ function DistortionSphere({ color = "#0066ff" }) {
 
     return (
         <Float speed={2} rotationIntensity={1} floatIntensity={1}>
-            <Sphere args={[1, 100, 100]} scale={2}>
+            <Sphere ref={mesh} args={[1, 100, 100]} scale={2}>
                 <MeshDistortMaterial
-                    ref={mesh}
                     color={color}
                     speed={3}
                     distort={0.4}
