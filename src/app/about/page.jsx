@@ -65,7 +65,7 @@ export default function AboutPage() {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.9 }}
-                    className="absolute bottom-10 left-8 md:left-16 text-white text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none"
+                    className="absolute bottom-10 left-8 md:left-16 text-white text-5xl md:text-7xl drop-shadow-lg font-bold uppercase tracking-tighter leading-none"
                 >
                     Our Story
                 </motion.h1>
