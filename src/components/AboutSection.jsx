@@ -201,7 +201,7 @@ export default function AboutSection() {
                     })}
 
                     {/* ── CTA Block ─────────────────── */}
-                    <div className="h-[150vh] flex flex-col justify-start pt-32 lg:pt-40">
+                    <div className="h-[80vh] flex flex-col justify-start pt-32 lg:pt-40">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
