@@ -7,7 +7,7 @@ export default function Showreel() {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <section className="py-24 md:py-32 px-6 bg-white">
+        <section className="py-12 md:py-32 px-6 bg-white">
             <div
                 className="max-w-7xl mx-auto relative group overflow-hidden rounded-[3rem] aspect-video bg-gray-100 border border-black/5 cursor-pointer shadow-lg"
                 onMouseEnter={() => setIsHovered(true)}

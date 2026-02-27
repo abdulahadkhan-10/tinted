@@ -122,7 +122,7 @@ export default function AboutSection() {
                             >
                                 {!section.isBlank && (
                                     <motion.div
-                                        className="absolute top-0 right-0 w-full lg:w-[45%] h-full flex items-center justify-center p-0 lg:p-4"
+                                        className="absolute top-0 right-0 w-full lg:w-[45%] h-full flex items-start lg:items-center justify-center pt-24 lg:pt-4"
                                         style={{
                                             y: index === 0 ? 0 : yInverse
                                         }}
