@@ -122,7 +122,7 @@ export default function AboutSection() {
                             >
                                 {!section.isBlank && (
                                     <motion.div
-                                        className="absolute top-0 right-0 w-full lg:w-[45%] h-full flex items-start lg:items-center justify-center pt-24 lg:pt-4"
+                                        className="absolute top-0 right-0 w-full lg:w-[45%] h-full flex items-start lg:items-center justify-center pt-16 lg:pt-4"
                                         style={{
                                             y: index === 0 ? 0 : yInverse
                                         }}
@@ -207,7 +207,7 @@ export default function AboutSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             viewport={{ amount: 0.5 }}
-                            className="max-w-xl space-y-8 text-white"
+                            className="max-w-xl space-y-8 text-white pt-24 pb-0"
                         >
                             <span className="font-mono text-xs uppercase tracking-[0.4em] text-cyan-300">
                                 Discover More
