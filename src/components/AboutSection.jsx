@@ -12,7 +12,7 @@ const sections = [
         subtitle: "The Identity",
         content: "Tinted Media is where strategy meets story — and where brands come to stand out. We're a modern creative and media agency crafting culture-driven campaigns, unforgettable narratives, and content designed to make people stop, look, and engage.",
         quote: "Because looking good isn't enough anymore. You have to mean something.",
-        image: "/journey/cup_empty.png",
+        image: "/cups/ChatGPT Image Feb 27, 2026, 03_52_09 PM.png",
         bgColor: "#ffffff",
         textColor: "text-black",
         labelColor: "text-electric-blue"
@@ -23,7 +23,7 @@ const sections = [
         phonetic: "/fɪlm & ˈfoʊ.toʊ/",
         subtitle: "01 // Production",
         content: "Cinematic videos and powerful photography that don't just play—they captivate and convert. We blend sharp strategy with bold storytelling to build identities people remember.",
-        image: "/journey/cup_film.png",
+        image: "/cups/film.png",
         bgColor: "#000000",
         textColor: "text-white",
         labelColor: "text-cyan-400"
@@ -34,7 +34,7 @@ const sections = [
         phonetic: "/ˈsoʊ.ʃəlz/",
         subtitle: "02 // Engagement",
         content: "We don't just post—we build presence through storytelling, engagement, and consistent growth. We turn digital noise into real influence.",
-        image: "/journey/cup_social.png",
+        image: "/cups/social.png",
         bgColor: "#6366f1",
         textColor: "text-white",
         labelColor: "text-white/80"
@@ -45,7 +45,7 @@ const sections = [
         phonetic: "/dɪˈzaɪn/",
         subtitle: "03 // Branding",
         content: "Visuals that command attention. Bold, strategic, and unforgettable brand identities. Thoughtful. Bold. A little rebellious.",
-        image: "/journey/cup_design.png",
+        image: "/cups/graphic.png",
         bgColor: "#ef4444",
         textColor: "text-white",
         labelColor: "text-white/80"
@@ -56,7 +56,7 @@ const sections = [
         phonetic: "/pərˈfɔːr.məns/",
         subtitle: "04 // Analytics",
         content: "Data-driven marketing that scales ROI and turns clicks into measurable revenue. We don't chase the digital pulse. We create it.",
-        image: "/journey/cup_performance.png",
+        image: "/cups/performance.png",
         bgColor: "#10b981",
         textColor: "text-white",
         labelColor: "text-white/80"
@@ -67,7 +67,7 @@ const sections = [
         phonetic: "/dɪˈvɛl.əp.mənt/",
         subtitle: "05 // Digital",
         content: "High-performing, SEO-friendly websites that design for performance and work hard for your business. Blending art with analytics.",
-        image: "/journey/cup_web.png",
+        image: "/cups/web.png",
         bgColor: "#0f172a",
         textColor: "text-white",
         labelColor: "text-cyan-300"
@@ -132,16 +132,10 @@ export default function AboutSection() {
                             const start = index * segmentSize;
                             const end = (index + 1) * segmentSize;
 
-                            // SYNCED TIMING: Wait until we are in the section to swap
-                            const fadeInStart = index === 0 ? -0.1 : start + (segmentSize * 0.1);
-                            const fadeInEnd = index === 0 ? 0.05 : start + (segmentSize * 0.4);
-                            const fadeOutStart = end - (segmentSize * 0.2);
-                            const fadeOutEnd = end;
-
-                            // eslint-disable-next-line react-hooks/rules-of-hooks
+                            // SHARP TRANSITION: No crossfade, just instant swap
                             const opacity = useTransform(
                                 smoothProgress,
-                                [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
+                                [start, start + 0.001, end - 0.001, end],
                                 [0, 1, 1, 0]
                             );
 
