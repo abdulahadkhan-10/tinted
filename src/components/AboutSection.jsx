@@ -12,7 +12,7 @@ const sections = [
         subtitle: "The Identity",
         content: "Tinted Media is where strategy meets story — and where brands come to stand out. We're a modern creative and media agency crafting culture-driven campaigns, unforgettable narratives, and content designed to make people stop, look, and engage.",
         quote: "Because looking good isn't enough anymore. You have to mean something.",
-        image: "/cups/ChatGPT Image Feb 27, 2026, 03_52_09 PM.png",
+        image: "/cups/blankcup.png",
         bgColor: "#ffffff",
         textColor: "text-black",
         labelColor: "text-electric-blue"
@@ -23,7 +23,7 @@ const sections = [
         phonetic: "/fɪlm & ˈfoʊ.toʊ/",
         subtitle: "01 // Production",
         content: "Cinematic videos and powerful photography that don't just play—they captivate and convert. We blend sharp strategy with bold storytelling to build identities people remember.",
-        image: "/cups/film.png",
+        image: "/cups/filmphoto.png",
         bgColor: "#000000",
         textColor: "text-white",
         labelColor: "text-cyan-400"
@@ -34,7 +34,7 @@ const sections = [
         phonetic: "/ˈsoʊ.ʃəlz/",
         subtitle: "02 // Engagement",
         content: "We don't just post—we build presence through storytelling, engagement, and consistent growth. We turn digital noise into real influence.",
-        image: "/cups/social.png",
+        image: "/cups/socialcup.png",
         bgColor: "#6366f1",
         textColor: "text-white",
         labelColor: "text-white/80"
@@ -45,7 +45,7 @@ const sections = [
         phonetic: "/dɪˈzaɪn/",
         subtitle: "03 // Branding",
         content: "Visuals that command attention. Bold, strategic, and unforgettable brand identities. Thoughtful. Bold. A little rebellious.",
-        image: "/cups/graphic.png",
+        image: "/cups/graphicd.png",
         bgColor: "#ef4444",
         textColor: "text-white",
         labelColor: "text-white/80"
@@ -56,7 +56,7 @@ const sections = [
         phonetic: "/pərˈfɔːr.məns/",
         subtitle: "04 // Analytics",
         content: "Data-driven marketing that scales ROI and turns clicks into measurable revenue. We don't chase the digital pulse. We create it.",
-        image: "/cups/performance.png",
+        image: "/cups/performancem.png",
         bgColor: "#10b981",
         textColor: "text-white",
         labelColor: "text-white/80"
@@ -67,7 +67,7 @@ const sections = [
         phonetic: "/dɪˈvɛl.əp.mənt/",
         subtitle: "05 // Digital",
         content: "High-performing, SEO-friendly websites that design for performance and work hard for your business. Blending art with analytics.",
-        image: "/cups/web.png",
+        image: "/cups/webdev.png",
         bgColor: "#0f172a",
         textColor: "text-white",
         labelColor: "text-cyan-300"
@@ -122,16 +122,16 @@ export default function AboutSection() {
                             >
                                 {!section.isBlank && (
                                     <motion.div
-                                        className="absolute top-0 right-0 w-full lg:w-2/5 h-full flex items-center justify-center p-8 lg:p-12"
+                                        className="absolute top-0 right-0 w-full lg:w-2/5 h-full flex items-center justify-center p-4 lg:p-8"
                                         style={{
                                             y: index === 0 ? 0 : yInverse
                                         }}
                                     >
-                                        <div className="relative w-full aspect-square max-w-[500px]">
+                                        <div className="relative w-full aspect-square max-w-[700px]">
                                             <img
                                                 src={section.image}
                                                 alt={section.title}
-                                                className="w-full h-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                                                className="w-full h-full object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.25)]"
                                             />
                                         </div>
                                     </motion.div>
